@@ -1,10 +1,59 @@
-body {
+/* Reset default margin dan padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
 }
 
-h1 {
+/* Header */
+header {
+    background-color: #333;
+    color: white;
     text-align: center;
-    color: #0073e6;
+    padding: 20px;
+}
+
+/* Grid untuk daftar komik */
+.comic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Card komik */
+.comic {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    transition: transform 0.2s;
+}
+
+.comic img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.comic h2 {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* Hover efek */
+.comic:hover {
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
 }
