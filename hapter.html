@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="popular.html">🔥 Popular</a></li>
+            <li><a href="genres.html">📚 Genres</a></li>
+            <li><a href="about.html">ℹ️ About</a></li>
+        </ul>
+    </nav>
+
+    <div class="chapter-container">
+        <h1 id="chapterTitle"></h1>
+        <p>Isi komik di sini...</p>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById('chapterTitle').innerText = params.get('title') || "Chapter";
+    </script>
+</body>
+</html>
