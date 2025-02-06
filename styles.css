@@ -164,10 +164,10 @@ nav ul li a:hover {
     display: none; /* Disembunyikan dulu */
 }
 .comic-grid img, .comic-image {
-    max-width: 200px; /* Ukuran gambar lebih kecil */
-    height: auto; /* Biar proporsional */
-    display: block;
-    margin: 10px auto; /* Tengah */
-    border-radius: 10px; /* Sudut agak melengkung */
+    max-width: 200px !important;
+    height: auto !important;
+    display: block !important;
+    margin: 10px auto !important;
+    border-radius: 10px !important;
 }
 
