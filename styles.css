@@ -27,18 +27,17 @@ header {
 .comic {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Pusatkan vertikal */
-    align-items: center; /* Pusatkan horizontal */
+    align-items: center; /* Pusatkan gambar */
     text-align: center;
-    width: 100%;
+    margin: 20px auto; /* Tambahkan margin supaya rapi */
 }
 
 .comic img {
-    max-width: 40%;  /* Gunakan persen supaya responsif */
+    max-width: 40%;  /* Ubah ke 40% agar proporsional */
     height: auto;
+    border-radius: 10px;
     display: block;
 }
-
 .comic h2 {
     margin-top: 10px;
     font-size: 16px;
