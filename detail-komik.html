@@ -17,27 +17,23 @@
     </ul>
 </nav>
 
-<div class="content">
-    <h1 id="judul-komik">Judul Komik</h1>
-    <img id="gambar-komik" src="images/hh.jpg" alt="Gambar Komik">
-    <p id="deskripsi-komik">Deskripsi komik akan muncul di sini...</p>
-</div>
+<main>
+    <div class="comic-detail">
+        <h1 id="comicTitle"></h1>
+        <img id="comicImage" src="" alt="Gambar Komik">
+    </div>
+</main>
 
-<a href="index.html">⬅ Kembali ke Beranda</a>
-
-<footer>
-    <p>&copy; 2025 Website Komik</p>
-</footer>
-
+<script src="script.js"></script>
 <script>
-    // Ambil data dari URL
-    const params = new URLSearchParams(window.location.search);
-    const judulKomik = params.get("judul");
+    // Ambil parameter dari URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const title = urlParams.get('title');
+    const image = urlParams.get('image');
 
-    // Ubah judul halaman
-    document.title = judulKomik;
-    document.getElementById("judul-komik").textContent = judulKomik;
-    document.getElementById("deskripsi-komik").textContent = `Deskripsi dari ${judulKomik} akan ditampilkan di sini.`;
+    // Tampilkan di halaman
+    document.getElementById('comicTitle').innerText = title;
+    document.getElementById('comicImage').src = image;
 </script>
 
 </body>
