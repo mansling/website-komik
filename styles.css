@@ -1,7 +1,8 @@
 /* Reset default margin dan padding */
 body {
+    margin:0;
+    pandding:0;
     font-family: Arial, sans-serif;
-   
 }
 
 /* Header */
@@ -121,8 +122,10 @@ nav ul li a:hover {
     background-color: #333;
 }
 
-.content {
-    border: 2px solid red;
+.content h1 {
+    margin: 0; /* Hilangin margin bawaan */
+    text-align: center; /* Biar tetep di tengah */
 }
+
 
 
