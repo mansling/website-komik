@@ -184,7 +184,7 @@ nav ul li a:hover {
 
 /* Untuk gambar di detail komik bisa pakai aturan yang lebih besar */
 .comic-image {
-    max-width: 100%;
+    max-width: 50%;
     height: auto;
     display: block;
     margin: 10px auto;
