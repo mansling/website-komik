@@ -42,6 +42,15 @@ header {
     margin-top: 10px;
     font-size: 16px;
 }
+.comic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+    justify-content: center;
+}
 
 /* Hover efek */
 .comic:hover {
