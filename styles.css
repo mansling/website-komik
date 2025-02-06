@@ -172,11 +172,12 @@ nav ul li a:hover {
     border-radius: 8px; /* Agar gambar memiliki sudut melengkung */
 }
 
-.comic-grid img, .comic-image {
-    max-width: 200px !important;
-    height: auto !important;
-    display: block !important;
-    margin: 10px auto !important;
-    border-radius: 10px !important;
+/* Untuk gambar di detail komik bisa pakai aturan yang lebih besar */
+.comic-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border-radius: 10px;
 }
 
