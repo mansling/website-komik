@@ -163,13 +163,13 @@ nav ul li a:hover {
     font-size: 16px;
     display: none; /* Disembunyikan dulu */
 }
-/* Atur ukuran gambar di halaman utama */
+/* Untuk gambar di halaman utama, pastikan ukurannya pas */
 .comic-grid img {
-    max-width: 100%;    /* Membatasi lebar gambar agar tidak melebihi lebar kontainer */
-    height: auto;       /* Menjaga rasio gambar tetap */
-    display: block;     /* Agar gambar tidak terhalang teks atau elemen lainnya */
-    margin: 10px auto;  /* Memberikan jarak atas/bawah dan menata gambar di tengah */
-    border-radius: 10px;
+    width: 250px;     /* Atur lebar gambar sesuai keinginan (bisa 250px atau lebih kecil) */
+    height: auto;     /* Menjaga rasio aspek gambar tetap */
+    display: block;   /* Agar gambar tidak terhalang elemen lain */
+    margin: 10px auto; /* Memberikan jarak dan memusatkan gambar */
+    border-radius: 8px; /* Agar gambar memiliki sudut melengkung */
 }
 
 .comic-grid img, .comic-image {
