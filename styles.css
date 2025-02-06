@@ -125,5 +125,8 @@ nav ul li a:hover {
 
 .content {
     margin-top: 80px; /* Tambah jarak biar gak ketutupan navbar */
+    text-align: center; /* Biar teks di tengah */
+    margin: 0 auto; /* Biar nggak lari ke samping */
+    max-width: 800px; /* Biar nggak terlalu melebar */
 }
 
