@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
 <nav>
     <ul>
         <li><a href="index.html">🏠 Home</a></li>
@@ -17,43 +18,17 @@
     </ul>
 </nav>
 
-<main>
-    <img id="comicImage" class="comic-image" src="images/hh.jpg" alt="Gambar Komik">
-    <!-- Judul komik yang diambil dari parameter URL -->
-    <h1 id="comicTitle">Judul Komik</h1>
-    <p>Deskripsi singkat tentang komik ini...</p>
+<div class="detail-container">
+    <img id="comicImage" src="" alt="Detail Komik">
+    <h1 id="comicTitle"></h1>
+    <p>Sinopsis komik ini akan ditampilkan di sini...</p>
+</div>
 
-    <!-- Daftar Chapter Komik -->
-    <h2>Chapters</h2>
-    <ul id="chapterList">
-        <!-- Chapter akan dimunculkan disini melalui JavaScript -->
-    </ul>
-</main>
-
-<script src="script.js"></script>
 <script>
-    // Ambil parameter komik dari URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const title = urlParams.get('title');
-    const image = urlParams.get('image');
-
-    // Set Judul Komik
-    document.getElementById('comicTitle').innerText = title;
-
-    // Daftar Chapter Komik
-    const chapterList = [
-        { chapter: 1, title: "Awal Cerita", link: `detail.html?chapter=1&title=${title}` },
-        { chapter: 2, title: "Petualangan Dimulai", link: `detail.html?chapter=2&title=${title}` },
-        // Tambahkan chapter lainnya di sini
-    ];
-
-    // Tambahkan Chapter ke halaman
-    const chapterListElement = document.getElementById('chapterList');
-    chapterList.forEach(chapter => {
-        const li = document.createElement('li');
-        li.innerHTML = `<a href="${chapter.link}">Chapter ${chapter.chapter}: ${chapter.title}</a>`;
-        chapterListElement.appendChild(li);
-    });
+    // Ambil parameter dari URL
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById('comicTitle').innerText = params.get('title') || "Judul Komik";
+    document.getElementById('comicImage').src = params.get('image') || "images/default.jpg";
 </script>
 
 </body>
