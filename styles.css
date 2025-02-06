@@ -25,16 +25,17 @@ header {
 
 /* Card komik */
 .comic {
-    text-align: center; /* Supaya semua isi div ini (termasuk gambar) berada di tengah */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
 }
 
 .comic img {
-    width: 100%;        
-    max-width: 150px;  /* Batasi ukuran gambar */
-    height: auto;      
-    display: block;    /* Biar tidak ada space ekstra di bawah gambar */
-    margin: 0 auto;    /* Memastikan gambar tetap di tengah */
-    border-radius: 8px; 
+    max-width: 150px !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
 }
 
 
