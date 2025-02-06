@@ -184,7 +184,7 @@ nav ul li a:hover {
 
 /* Untuk gambar di detail komik bisa pakai aturan yang lebih besar */
 .comic-image {
-    max-width: 50%;
+    max-width: 100%;
     height: auto;
     display: block;
     margin: 10px auto;
@@ -201,7 +201,7 @@ nav ul li a:hover {
 }
 
 .detail-container img {
-    max-width: 80%; /* Batasi ukuran gambar */
+    max-width: 60%; /* Batasi ukuran gambar */
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tambahkan shadow agar lebih estetik */
