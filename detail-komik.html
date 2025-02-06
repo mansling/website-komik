@@ -18,22 +18,41 @@
 </nav>
 
 <main>
-    <div class="comic-detail">
-        <h1 id="comicTitle"></h1>
-        <img id="comicImage" src="" alt="Gambar Komik">
-    </div>
+    <!-- Judul komik yang diambil dari parameter URL -->
+    <h1 id="comicTitle">Judul Komik</h1>
+    <p>Deskripsi singkat tentang komik ini...</p>
+
+    <!-- Daftar Chapter Komik -->
+    <h2>Chapters</h2>
+    <ul id="chapterList">
+        <!-- Chapter akan dimunculkan disini melalui JavaScript -->
+    </ul>
 </main>
 
 <script src="script.js"></script>
 <script>
-    // Ambil parameter dari URL
+    // Ambil parameter komik dari URL
     const urlParams = new URLSearchParams(window.location.search);
     const title = urlParams.get('title');
     const image = urlParams.get('image');
 
-    // Tampilkan di halaman
+    // Set Judul Komik
     document.getElementById('comicTitle').innerText = title;
-    document.getElementById('comicImage').src = image;
+
+    // Daftar Chapter Komik
+    const chapterList = [
+        { chapter: 1, title: "Awal Cerita", link: `detail.html?chapter=1&title=${title}` },
+        { chapter: 2, title: "Petualangan Dimulai", link: `detail.html?chapter=2&title=${title}` },
+        // Tambahkan chapter lainnya di sini
+    ];
+
+    // Tambahkan Chapter ke halaman
+    const chapterListElement = document.getElementById('chapterList');
+    chapterList.forEach(chapter => {
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="${chapter.link}">Chapter ${chapter.chapter}: ${chapter.title}</a>`;
+        chapterListElement.appendChild(li);
+    });
 </script>
 
 </body>
