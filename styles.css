@@ -182,3 +182,28 @@ nav ul li a:hover {
     border-radius: 10px;
 }
 
+.detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Pusatkan konten */
+    text-align: center;
+    margin: 20px auto;
+    max-width: 600px; /* Atur agar tidak terlalu lebar */
+}
+
+.detail-container img {
+    max-width: 80%; /* Batasi ukuran gambar */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tambahkan shadow agar lebih estetik */
+}
+
+.detail-container h1 {
+    font-size: 24px;
+    margin-top: 15px;
+}
+
+.detail-container p {
+    font-size: 18px;
+    color: #666;
+}
