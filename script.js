@@ -32,9 +32,18 @@ function searchComic() {
     });
 }
 
-// Fungsi untuk clear search
 function clearSearch() {
-    document.getElementById("searchBar").value = "";
-    searchComic(); // Refresh daftar komik
+    let input = document.getElementById("searchBar");
+    let clearBtn = document.getElementById("clearSearch");
+    let comics = document.querySelectorAll(".comic");
+
+    input.value = "";  // Kosongkan input
+    clearBtn.style.display = "none"; // Sembunyikan tombol clear
+
+    // Tampilkan semua komik lagi
+    comics.forEach(comic => {
+        comic.style.display = "block";
+    });
 }
+
 
