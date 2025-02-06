@@ -25,19 +25,19 @@ header {
 
 /* Card komik */
 .comic {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Pusatkan vertikal */
+    align-items: center; /* Pusatkan horizontal */
+    text-align: center;
+    width: 100%;
 }
 
 .comic img {
-    max-width: 150px !important;
-    height: auto !important;
-    display: block !important;
-    margin: 0 auto !important;
+    max-width: 40%;  /* Gunakan persen supaya responsif */
+    height: auto;
+    display: block;
 }
-
 
 .comic h2 {
     margin-top: 10px;
