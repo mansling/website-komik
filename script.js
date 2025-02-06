@@ -17,3 +17,16 @@ toggleButton.addEventListener("click", () => {
         toggleButton.textContent = "🌙 Dark Mode";
     }
 });
+function searchComic() {
+    let input = document.getElementById("searchBar").value.toLowerCase();
+    let comics = document.querySelectorAll(".comic");
+
+    comics.forEach(comic => {
+        let title = comic.querySelector("h2").innerText.toLowerCase();
+        if (title.includes(input)) {
+            comic.style.display = "block";
+        } else {
+            comic.style.display = "none";
+        }
+    });
+}
