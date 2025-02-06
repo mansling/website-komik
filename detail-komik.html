@@ -4,12 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Komik</title>
-    <link rel="stylesheet" href="style.css"> <!-- Kalau ada CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Judul Komik</h1>
-    <img src="gambar-komik.jpg" alt="Gambar Komik" width="200">
-    <p>Deskripsi komik akan ditampilkan di sini...</p>
-    <a href="index.html">Kembali ke Beranda</a>
+<nav>
+    <ul>
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="popular.html">🔥 Popular</a></li>
+        <li><a href="genres.html">📚 Genres</a></li>
+        <li><a href="about.html">ℹ️ About</a></li>
+        <li><button id="dark-mode-toggle">🌙 Dark Mode</button></li>
+    </ul>
+</nav>
+
+<div class="content">
+    <h1 id="judul-komik">Judul Komik</h1>
+    <img id="gambar-komik" src="images/hh.jpg" alt="Gambar Komik">
+    <p id="deskripsi-komik">Deskripsi komik akan muncul di sini...</p>
+</div>
+
+<a href="index.html">⬅ Kembali ke Beranda</a>
+
+<footer>
+    <p>&copy; 2025 Website Komik</p>
+</footer>
+
+<script>
+    // Ambil data dari URL
+    const params = new URLSearchParams(window.location.search);
+    const judulKomik = params.get("judul");
+
+    // Ubah judul halaman
+    document.title = judulKomik;
+    document.getElementById("judul-komik").textContent = judulKomik;
+    document.getElementById("deskripsi-komik").textContent = `Deskripsi dari ${judulKomik} akan ditampilkan di sini.`;
+</script>
+
 </body>
 </html>
