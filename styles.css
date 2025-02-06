@@ -216,3 +216,32 @@ nav ul li a:hover {
     font-size: 18px;
     color: #666;
 }
+
+.chapters {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.chapters h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.chapters ul {
+    list-style: none;
+    padding: 0;
+}
+
+.chapters ul li {
+    margin: 5px 0;
+}
+
+.chapters ul li a {
+    text-decoration: none;
+    color: blue;
+    font-size: 16px;
+}
+
+.chapters ul li a:hover {
+    text-decoration: underline;
+}
