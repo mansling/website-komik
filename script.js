@@ -18,15 +18,23 @@ toggleButton.addEventListener("click", () => {
     }
 });
 function searchComic() {
-    let input = document.getElementById("searchBar").value.toLowerCase();
+    let input = document.getElementById("searchBar");
+    let filter = input.value.toLowerCase();
     let comics = document.querySelectorAll(".comic");
+    let clearBtn = document.getElementById("clearSearch");
+
+    // Tampilkan tombol clear kalau ada teks
+    clearBtn.style.display = filter ? "block" : "none";  
 
     comics.forEach(comic => {
         let title = comic.querySelector("h2").innerText.toLowerCase();
-        if (title.includes(input)) {
-            comic.style.display = "block";
-        } else {
-            comic.style.display = "none";
-        }
+        comic.style.display = title.includes(filter) ? "block" : "none";
     });
 }
+
+// Fungsi untuk clear search
+function clearSearch() {
+    document.getElementById("searchBar").value = "";
+    searchComic(); // Refresh daftar komik
+}
+
