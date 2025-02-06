@@ -139,3 +139,27 @@ nav ul li a:hover {
     text-align: center;
     border: none; /* Hilangin border */
 }
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 300px;
+    margin: 10px auto;
+}
+
+#searchBar {
+    width: 100%;
+    padding: 8px 35px 8px 10px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#clearSearch {
+    position: absolute;
+    right: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: none; /* Disembunyikan dulu */
+}
