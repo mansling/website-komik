@@ -1,13 +1,11 @@
 const toggleButton = document.getElementById("dark-mode-toggle");
 const body = document.body;
 
-// Cek dark mode sebelumnya
 if (localStorage.getItem("dark-mode") === "enabled") {
     body.classList.add("dark-mode");
     toggleButton.textContent = "☀️ Light Mode";
 }
 
-// Event listener buat tombol
 toggleButton.addEventListener("click", () => {
     body.classList.toggle("dark-mode");
 
