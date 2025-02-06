@@ -163,3 +163,11 @@ nav ul li a:hover {
     font-size: 16px;
     display: none; /* Disembunyikan dulu */
 }
+.comic-grid img, .comic-image {
+    max-width: 200px; /* Ukuran gambar lebih kecil */
+    height: auto; /* Biar proporsional */
+    display: block;
+    margin: 10px auto; /* Tengah */
+    border-radius: 10px; /* Sudut agak melengkung */
+}
+
