@@ -45,5 +45,15 @@ function clearSearch() {
         comic.style.display = "block";
     });
 }
+// Ambil parameter dari URL
+const urlParams = new URLSearchParams(window.location.search);
+const title = urlParams.get("title");
+const image = urlParams.get("image");
+
+// Isi halaman detail
+document.getElementById("comicTitle").innerText = title;
+document.getElementById("comicImage").src = image;
+document.getElementById("comicImage").alt = title;
+document.getElementById("comicDescription").innerText = `Deskripsi dari ${title}. Lorem ipsum dolor sit amet...`;
 
 
