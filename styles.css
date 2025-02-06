@@ -123,9 +123,12 @@ nav ul li a:hover {
 }
 
 .content h1 {
-    margin: 0; /* Hilangin margin bawaan */
-    text-align: center; /* Biar tetep di tengah */
+    margin: 0;
+    text-align: center;
+    display: block;
+    width: 100%;
 }
+
 
 
 
