@@ -78,6 +78,7 @@ nav ul li a:hover {
 .search-container {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
 }
 
@@ -102,17 +103,17 @@ nav ul li a:hover {
     background: darkred;
 }
 
-/* Judul Komik */
-/* Pastikan daftar komik rata tengah */
+/* Daftar Komik */
 .comic-list {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Membuat semua item berada di tengah */
+    align-items: center; /* Membuat daftar komik berada di tengah */
     gap: 15px;
     margin-top: 20px;
+    width: 100%;
 }
 
-/* Pastikan setiap item komik juga rata tengah */
+/* Kotak Komik */
 .comic {
     width: 90%;
     max-width: 600px;
@@ -120,20 +121,16 @@ nav ul li a:hover {
     border: 1px solid #ddd;
     border-radius: 10px;
     background: white;
-    text-align: center; /* Pastikan isi di dalamnya rata tengah */
+    text-align: center;
     transition: 0.3s;
+    margin: 0 auto;
 }
 
-.comic img {
-    display: block;
-    margin: 0 auto; /* Supaya gambar berada di tengah */
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
+.comic:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
-/* Gambar Responsif */
+/* Gambar Komik */
 .comic img {
     max-width: 100%;
     height: auto;
@@ -173,28 +170,33 @@ nav ul li a:hover {
     border: 1px solid #ccc;
 }
 
-/* Daftar Komik */
-.comic-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.comic {
-    width: 90%;
-    max-width: 600px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background: white;
-    text-align: center;
+/* Tombol */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 15px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
     transition: 0.3s;
 }
 
-.comic:hover {
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Mode Gelap untuk Komik */
+.dark-mode .comic {
+    background: #1e1e1e;
+    border: 1px solid #444;
+    color: white;
+}
+
+.dark-mode .comic:hover {
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
 }
 
 /* Responsivitas */
