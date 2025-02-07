@@ -103,6 +103,35 @@ nav ul li a:hover {
 }
 
 /* Judul Komik */
+/* Pastikan daftar komik rata tengah */
+.comic-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Membuat semua item berada di tengah */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Pastikan setiap item komik juga rata tengah */
+.comic {
+    width: 90%;
+    max-width: 600px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: white;
+    text-align: center; /* Pastikan isi di dalamnya rata tengah */
+    transition: 0.3s;
+}
+
+.comic img {
+    display: block;
+    margin: 0 auto; /* Supaya gambar berada di tengah */
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
 h1 {
     text-align: center;
     font-size: 28px;
