@@ -20,58 +20,15 @@
         <h1 id="chapterTitle"></h1>
         <img id="chapterImage" src="" alt="Chapter Image" loading="lazy">
 
-        <!-- Tombol Navigasi -->
         <div class="navigation">
             <button id="prevChapter">⬅️ Sebelumnya</button>
             <button id="nextChapter">➡️ Berikutnya</button>
-                        <label for="chapterSelect">📖 Pilih Chapter:</label>
+            <label for="chapterSelect">📖 Pilih Chapter:</label>
             <select id="chapterSelect"></select>
-
         </div>
     </div>
 
-    <script>
-        const params = new URLSearchParams(window.location.search);
-        const comicTitle = params.get("komik") || "judul_komik_1";
-        let chapterNumber = parseInt(params.get("chapter")) || 1;
-
-        // Set judul chapter
-        document.getElementById("chapterTitle").innerText = `Chapter ${chapterNumber}`;
-
-        // Set gambar sesuai chapter
-        const imageElement = document.getElementById("chapterImage");
-        const imageSrc = `images/${comicTitle}_ch${chapterNumber}.jpg`;
-
-        imageElement.src = imageSrc;
-
-        // Debugging: Cek apakah gambar berhasil dimuat
-        imageElement.onload = function() {
-            console.log("✅ Gambar berhasil dimuat:", imageSrc);
-        };
-
-        imageElement.onerror = function() {
-            console.error("❌ Gagal memuat gambar:", imageSrc);
-            imageElement.src = "images/not-found.jpg"; // Jika gambar tidak ada, pakai placeholder
-        };
-
-        console.log("📖 Chapter Number: ", chapterNumber);
-
-        // Navigasi tombol
-        document.getElementById("prevChapter").addEventListener("click", function() {
-            if (chapterNumber > 1) {
-                window.location.href = `chapter.html?komik=${comicTitle}&chapter=${chapterNumber - 1}`;
-            }
-        });
-
-        document.getElementById("nextChapter").addEventListener("click", function() {
-            window.location.href = `chapter.html?komik=${comicTitle}&chapter=${chapterNumber + 1}`;
-        });
-
-        // Tombol kembali ke daftar chapter
-        document.getElementById("backToList").addEventListener("click", function() {
-            window.location.href = `chapters.html?komik=${comicTitle}`;
-        });
-
-    </script>
+    <!-- Load script eksternal -->
+    <script src="script.js"></script>
 </body>
 </html>
