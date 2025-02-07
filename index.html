@@ -1,9 +1,10 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter</title>
+    <title>Komik Online</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,22 +15,15 @@
             <li><a href="genres.html">📚 Genres</a></li>
             <li><a href="about.html">ℹ️ About</a></li>
         </ul>
-        <button id="dark-mode-toggle">🌙 Dark Mode</button>
     </nav>
-
-    <div class="chapter-container">
-        <h1 id="chapterTitle"></h1>
-        <img id="chapterImage" src="" alt="Chapter Image" loading="lazy">
-
-        <div class="navigation">
-            <button id="prevChapter">⬅️ Sebelumnya</button>
-            <button id="nextChapter">➡️ Berikutnya</button>
-            <label for="chapterSelect">📖 Pilih Chapter:</label>
-            <select id="chapterSelect"></select>
-        </div>
+    
+    <div class="container">
+        <h1>Daftar Komik</h1>
+        <input type="text" id="searchBar" placeholder="Cari komik...">
+        <button id="clearSearch">❌</button>
+        <div id="comicList"></div>
     </div>
-
-    <!-- Load script eksternal -->
+    
     <script src="script.js"></script>
 </body>
 </html>
