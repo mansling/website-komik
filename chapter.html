@@ -19,12 +19,29 @@
     <div class="chapter-container">
         <h1 id="chapterTitle"></h1>
         <p>Isi komik di sini...</p>
-        <img id="chapterImage" src="" alt="Gambar Komik" style="width: 100%; max-width: 800px;">
+       /*img id="chapterImage" src="" alt="Gambar Komik" style="width: 100%; max-width: 800px;">
+        <img id="chapterImage" src="images/default.jpg" alt="Chapter Image">
+        
     </div>
 
     <script>
+       /* const params = new URLSearchParams(window.location.search);
+        document.getElementById('chapterTitle').innerText = params.get('title') || "Chapter";*/
         const params = new URLSearchParams(window.location.search);
-        document.getElementById('chapterTitle').innerText = params.get('title') || "Chapter";
+            const comicTitle = params.get("title") || "Judul Komik 1 - Chapter 1";
+            
+            // Ubah format judul agar sesuai dengan nama file gambar
+            let formattedTitle = comicTitle
+                .replace(/\s+/g, "_")  // Ganti spasi dengan _
+                .replace(/-/g, "")      // Hilangkan tanda -
+                .toLowerCase();         // Pakai huruf kecil semua
+            
+            // Format gambar mengikuti aturan "judul_komik_1_ch1.jpg"
+            const imageSrc = `images/${formattedTitle}.jpg`;
+            
+            // Set gambar ke halaman
+            document.getElementById("chapterImage").src = imageSrc;
+
     </script>
 </body>
 </html>
