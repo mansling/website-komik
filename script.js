@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+console.log(localStorage.getItem("dark-mode"));
 
     // ================== PENCARIAN KOMIK ==================
     const searchBar = document.getElementById("searchBar");
