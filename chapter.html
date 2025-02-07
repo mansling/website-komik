@@ -18,45 +18,37 @@
 
     <div class="chapter-container">
         <h1 id="chapterTitle"></h1>
+        <img id="chapterImage" src="" alt="Chapter Image">
+        
+        <!-- Tombol Navigasi -->
         <div class="navigation">
             <button id="prevChapter">⬅️ Sebelumnya</button>
             <button id="nextChapter">➡️ Berikutnya</button>
         </div>
-        <img id="chapterImage" src="" alt="Chapter Image">
     </div>
 
     <script>
         const params = new URLSearchParams(window.location.search);
-        const comicTitle = params.get("title") || "Judul Komik 1 - Chapter 1";
-        
-        // Format ulang nama file gambar
-        let formattedTitle = comicTitle
-            .replace(/\s+/g, "_")  // Ganti spasi dengan _
-            .replace(/-/g, "_")    // Ganti - dengan _
-            .toLowerCase();        // Pakai huruf kecil semua
-        
-        // Atur judul dan gambar
-        document.getElementById("chapterTitle").innerText = comicTitle;
-        document.getElementById("chapterImage").src = `images/${formattedTitle}.jpg`;
-        const currentParams = new URLSearchParams(window.location.search);
-        const currentTitle = currentParams.get("title") || "Judul Komik 1 - Chapter 1";
-        
-        const currentChapter = parseInt(currentParams.get("chapter")) || 1;
-        const comicName = currentParams.get("komik") || "judul_komik_1";
-        
-        document.getElementById("chapterTitle").innerText = currentTitle;
-        
-        // Buat fungsi untuk berpindah chapter
+        const comicTitle = params.get("komik") || "judul_komik_1";
+        const chapterNumber = parseInt(params.get("chapter")) || 1;
+
+        // Set judul chapter
+        document.getElementById("chapterTitle").innerText = `Chapter ${chapterNumber}`;
+
+        // Set gambar sesuai chapter
+        const imageSrc = `images/${comicTitle}_ch${chapterNumber}.jpg`;
+        document.getElementById("chapterImage").src = imageSrc;
+
+        // Navigasi tombol
         document.getElementById("prevChapter").addEventListener("click", function() {
-            if (currentChapter > 1) {
-                window.location.href = `chapter.html?komik=${comicName}&chapter=${currentChapter - 1}`;
+            if (chapterNumber > 1) {
+                window.location.href = `chapter.html?komik=${comicTitle}&chapter=${chapterNumber - 1}`;
             }
         });
-        
-        document.getElementById("nextChapter").addEventListener("click", function() {
-            window.location.href = `chapter.html?komik=${comicName}&chapter=${currentChapter + 1}`;
-        });
 
+        document.getElementById("nextChapter").addEventListener("click", function() {
+            window.location.href = `chapter.html?komik=${comicTitle}&chapter=${chapterNumber + 1}`;
+        });
     </script>
 </body>
 </html>
