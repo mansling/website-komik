@@ -35,8 +35,14 @@
         document.getElementById("chapterTitle").innerText = `Chapter ${chapterNumber}`;
 
         // Set gambar sesuai chapter
-        const imageSrc = `images/${comicTitle}_ch${chapterNumber}.jpg`;
-        document.getElementById("chapterImage").src = imageSrc;
+        const imageElement = document.getElementById("chapterImage");
+        const imageSrc = `images/judul_komik_1_ch${chapterNumber}.jpg`;
+        
+        imageElement.src = imageSrc;
+        imageElement.onerror = function() {
+            console.error("Gagal memuat gambar:", imageSrc);
+        };
+        
 
         console.log("Image Source: ", imageSrc);
 
