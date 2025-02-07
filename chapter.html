@@ -32,6 +32,40 @@
         const chapterNumber = parseInt(params.get("chapter")) || 1;
 
         // Set judul chapter
+        d<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="popular.html">🔥 Popular</a></li>
+            <li><a href="genres.html">📚 Genres</a></li>
+            <li><a href="about.html">ℹ️ About</a></li>
+        </ul>
+    </nav>
+
+    <div class="chapter-container">
+        <h1 id="chapterTitle"></h1>
+        <img id="chapterImage" src="" alt="Chapter Image">      
+        <!-- Tombol Navigasi -->
+        <div class="navigation">
+            <button id="prevChapter">⬅️ Sebelumnya</button>
+            <button id="nextChapter">➡️ Berikutnya</button>
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const comicTitle = params.get("komik") || "judul_komik_1";
+        const chapterNumber = parseInt(params.get("chapter")) || 1;
+
+        // Set judul chapter
         document.getElementById("chapterTitle").innerText = `Chapter ${chapterNumber}`;
 
         // Set gambar sesuai chapter
@@ -57,6 +91,9 @@
         document.getElementById("nextChapter").addEventListener("click", function() {
             window.location.href = `chapter.html?komik=${comicTitle}&chapter=${chapterNumber + 1}`;
         });
+    </script>
+</body>
+</html>
     </script>
 </body>
 </html>
