@@ -3,98 +3,35 @@ document.addEventListener("DOMContentLoaded", function () {
     const toggleButton = document.getElementById("dark-mode-toggle");
     const body = document.body;
 
-    // Mengecek apakah dark mode sudah diaktifkan sebelumnya
-    if (toggleButton) {
-        if (localStorage.getItem("dark-mode") === "enabled") {
-            body.classList.add("dark-mode");
-            toggleButton.textContent = "☀️ Light Mode";  // Mengubah teks tombol saat dark mode aktif
+    if (localStorage.getItem("dark-mode") === "enabled") {
+        body.classList.add("dark-mode");
+        toggleButton.textContent = "☀️ Light Mode";
+    }
+
+    toggleButton.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+
+        if (body.classList.contains("dark-mode")) {
+            localStorage.setItem("dark-mode", "enabled");
+            toggleButton.textContent = "☀️ Light Mode";
+        } else {
+            localStorage.setItem("dark-mode", "disabled");
+            toggleButton.textContent = "🌙 Dark Mode";
         }
+    });
 
-        // Event listener untuk mengubah dark mode saat tombol diklik
-        toggleButton.addEventListener("click", () => {
-            body.classList.toggle("dark-mode");
-
-            // Menyimpan status dark mode di localStorage
-            if (body.classList.contains("dark-mode")) {
-                localStorage.setItem("dark-mode", "enabled");
-                toggleButton.textContent = "☀️ Light Mode";
-            } else {
-                localStorage.setItem("dark-mode", "disabled");
-                toggleButton.textContent = "🌙 Dark Mode";
-            }
-        });
-    }
-});
-console.log(localStorage.getItem("dark-mode"));
-
-    // ================== PENCARIAN KOMIK ==================
-    const searchBar = document.getElementById("searchBar");
-    const clearSearch = document.getElementById("clearSearch");
-    const comics = document.querySelectorAll(".comic");
-
-    if (searchBar) {
-        searchBar.addEventListener("keyup", function () {
-            let searchText = searchBar.value.toLowerCase();
-            comics.forEach(comic => {
-                let title = comic.querySelector("h2").textContent.toLowerCase();
-                comic.style.display = title.includes(searchText) ? "block" : "none";
-            });
-        });
-
-        clearSearch.addEventListener("click", function () {
-            searchBar.value = "";
-            comics.forEach(comic => comic.style.display = "block");
-        });
-    }
-
-    // ================== LOAD DETAIL KOMIK ==================
+    // ================== NAVIGASI CHAPTER ==================
     const params = new URLSearchParams(window.location.search);
     const comicTitle = params.get("komik") || "Judul Komik";
     const chapterNumber = parseInt(params.get("chapter")) || 1;
 
-    const titleElement = document.getElementById("comicTitle");
-    const imageElement = document.getElementById("comicImage");
-    const chapterList = document.getElementById("chapterList");
-
-    if (titleElement && imageElement) {
-        titleElement.innerText = comicTitle;
-        imageElement.src = `images/${comicTitle.replace(/\s+/g, "_")}.jpg`;
-        imageElement.onerror = function () {
-            imageElement.src = "images/not-found.jpg";
-        };
-    }
-
-    // Data contoh daftar chapter
-    const chaptersData = {
-        "Judul Komik 1": [
-            { number: 1, link: "chapter.html?komik=Judul Komik 1&chapter=1" },
-            { number: 2, link: "chapter.html?komik=Judul Komik 1&chapter=2" }
-        ],
-        "Judul Komik 2": [
-            { number: 1, link: "chapter.html?komik=Judul Komik 2&chapter=1" },
-            { number: 2, link: "chapter.html?komik=Judul Komik 2&chapter=2" }
-        ]
-    };
-
-    if (chapterList && chaptersData[comicTitle]) {
-        chapterList.innerHTML = "";
-        chaptersData[comicTitle].forEach(chapter => {
-            const li = document.createElement("li");
-            const a = document.createElement("a");
-            a.href = chapter.link;
-            a.textContent = `Chapter ${chapter.number}`;
-            li.appendChild(a);
-            chapterList.appendChild(li);
-        });
-    }
-
-    // ================== NAVIGASI CHAPTER ==================
-    const totalChapters = 224; // Ubah sesuai jumlah chapter yang sebenarnya
     const chapterTitle = document.getElementById("chapterTitle");
     const chapterImage = document.getElementById("chapterImage");
     const prevChapter = document.getElementById("prevChapter");
     const nextChapter = document.getElementById("nextChapter");
     const chapterSelect = document.getElementById("chapterSelect");
+
+    const totalChapters = 224; // Ganti sesuai jumlah chapter yang benar
 
     if (chapterTitle && chapterImage) {
         chapterTitle.textContent = `Chapter ${chapterNumber}`;
@@ -108,6 +45,7 @@ console.log(localStorage.getItem("dark-mode"));
 
     // Dropdown chapter
     if (chapterSelect) {
+        chapterSelect.innerHTML = "";
         for (let i = totalChapters; i >= 1; i--) {
             let option = document.createElement("option");
             option.value = i;
