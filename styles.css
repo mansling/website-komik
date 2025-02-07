@@ -100,4 +100,32 @@ nav ul li a:hover {
 .chapters a:hover {
     color: #0056b3;
 }
+
+/* Default Light Mode */
+body {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #333;
+    color: #f5f5f5;
+}
+
+nav.dark-mode {
+    background-color: #444;
+}
+
+nav ul li a.dark-mode {
+    color: #fff;
+}
+
+button.dark-mode {
+    background-color: #444;
+    color: #fff;
+}
+
 </style>
+
+
