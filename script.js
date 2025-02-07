@@ -56,4 +56,17 @@ document.getElementById("comicImage").src = image;
 document.getElementById("comicImage").alt = title;
 document.getElementById("comicDescription").innerText = `Deskripsi dari ${title}. Lorem ipsum dolor sit amet...`;
 
+const params = new URLSearchParams(window.location.search);
+const title = params.get('title');
+
+// Data gambar berdasarkan chapter (contoh)
+const chapterImages = {
+    "Judul Komik 1 - Chapter 1": "images/judul_komik_1_ch1.jpg",
+    "Judul Komik 1 - Chapter 2": "images/judul_komik_1_ch2.jpg",
+    "Judul Komik 2 - Chapter 1": "images/judul_komik_2_ch1.jpg",
+};
+
+// Tampilkan gambar sesuai chapter
+const chapterImage = document.getElementById('chapterImage');
+chapterImage.src = chapterImages[title] || "images/default.jpg"; // Pakai default kalau tidak ada
 
