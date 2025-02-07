@@ -16,21 +16,25 @@
         </ul>
     </nav>
 
-    <div class="chapter-list">
+    <div class="chapter-list-container">
         <h1>Daftar Chapter</h1>
-        <ul id="chapterLinks"></ul>
+        <ul id="chapterList"></ul>
     </div>
 
     <script>
         const params = new URLSearchParams(window.location.search);
         const comicTitle = params.get("komik") || "judul_komik_1";
-        const chapterCount = 10; // Ubah jumlah chapter sesuai kebutuhan
+        const totalChapters = 10; // Ganti sesuai jumlah chapter yang ada
 
-        const chapterLinks = document.getElementById("chapterLinks");
-        for (let i = 1; i <= chapterCount; i++) {
+        const chapterList = document.getElementById("chapterList");
+
+        for (let i = 1; i <= totalChapters; i++) {
             const li = document.createElement("li");
-            li.innerHTML = `<a href="chapter.html?komik=${comicTitle}&chapter=${i}">Chapter ${i}</a>`;
-            chapterLinks.appendChild(li);
+            const link = document.createElement("a");
+            link.href = `chapter.html?komik=${comicTitle}&chapter=${i}`;
+            link.innerText = `Chapter ${i}`;
+            li.appendChild(link);
+            chapterList.appendChild(li);
         }
     </script>
 </body>
