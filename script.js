@@ -3,15 +3,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const toggleButton = document.getElementById("dark-mode-toggle");
     const body = document.body;
 
+    // Mengecek apakah dark mode sudah diaktifkan sebelumnya
     if (toggleButton) {
         if (localStorage.getItem("dark-mode") === "enabled") {
             body.classList.add("dark-mode");
-            toggleButton.textContent = "☀️ Light Mode";
+            toggleButton.textContent = "☀️ Light Mode";  // Mengubah teks tombol saat dark mode aktif
         }
 
+        // Event listener untuk mengubah dark mode saat tombol diklik
         toggleButton.addEventListener("click", () => {
             body.classList.toggle("dark-mode");
 
+            // Menyimpan status dark mode di localStorage
             if (body.classList.contains("dark-mode")) {
                 localStorage.setItem("dark-mode", "enabled");
                 toggleButton.textContent = "☀️ Light Mode";
@@ -21,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+});
 
     // ================== PENCARIAN KOMIK ==================
     const searchBar = document.getElementById("searchBar");
