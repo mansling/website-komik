@@ -3,72 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Komik</title>
+    <title>Chapter</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="images/favicon.ico">
 </head>
 <body>
-<nav>
-    <ul>
-        <li><a href="index.html">🏠 Home</a></li>
-        <li><a href="popular.html">🔥 Popular</a></li>
-        <li><a href="genres.html">📚 Genres</a></li>
-        <li><a href="about.html">ℹ️ About</a></li>
+    <nav>
+        <ul>
+            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="popular.html">🔥 Popular</a></li>
+            <li><a href="genres.html">📚 Genres</a></li>
+            <li><a href="about.html">ℹ️ About</a></li>
+        </ul>
         <button id="dark-mode-toggle">🌙 Dark Mode</button>
-    </ul>
-</nav>
+    </nav>
 
-<div class="content">
-    <h1>Website Komik</h1>
-    <p>Selamat datang di website komik!</p>
-</div>
+    <div class="chapter-container">
+        <h1 id="chapterTitle"></h1>
+        <img id="chapterImage" src="" alt="Chapter Image" loading="lazy">
 
-<main>
-        <div class="search-container">
-            <input type="text" id="searchBar" placeholder="Cari komik...">
-            <button id="clearSearch">❌</button>
+        <div class="navigation">
+            <button id="prevChapter">⬅️ Sebelumnya</button>
+            <button id="nextChapter">➡️ Berikutnya</button>
+            <label for="chapterSelect">📖 Pilih Chapter:</label>
+            <select id="chapterSelect"></select>
         </div>
+    </div>
 
-
-    <div class="comic-grid">
-        <div class="comic">
-            <a href="detail-komik.html?title=Judul Komik 1&image=images/hh.jpg">
-                <img src="images/hh.jpg" alt="Komik 1">
-                <h2>Judul Komik 1</h2>
-            </a>
-        </div>
-        <div class="comic">
-            <a href="detail-komik.html?title=Judul Komik 2&image=images/hh.jpg">
-                <img src="images/hh.jpg" alt="Komik 2">
-                <h2>Judul Komik 2</h2>
-            </a>
-        </div>
-                <div class="comic">
-            <a href="detail-komik.html?title=Judul Komik 3&image=images/hh.jpg">
-                <img src="images/hh.jpg" alt="Komik 3">
-                <h2>Judul Komik 3</h2>
-            </a>
-        </div>
-                <div class="comic">
-            <a href="detail-komik.html?title=Judul Komik 4&image=images/hh.jpg">
-                <img src="images/hh.jpg" alt="Komik 4">
-                <h2>Judul Komik 4</h2>
-            </a>
-        </div>
-                <div class="comic">
-            <a href="detail-komik.html?title=Judul Komik 5&image=images/hh.jpg">
-                <img src="images/hh.jpg" alt="Komik 5">
-                <h2>Judul Komik 5</h2>
-            </a>
-        </div>
-     </div>
-</main>
-
-
-<footer>
-    <p>&copy; 2025 Website Komik</p>
-</footer>
-
-<script src="script.js"></script>
+    <!-- Load script eksternal -->
+    <script src="script.js"></script>
 </body>
 </html>
