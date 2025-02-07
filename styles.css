@@ -1,4 +1,3 @@
-<style>
 /* Reset default margin dan padding */
 * {
     margin: 0;
@@ -12,6 +11,13 @@ body {
     color: #333;
     padding-top: 70px;
     text-align: center;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #f5f5f5;
 }
 
 /* Navbar */
@@ -23,12 +29,15 @@ nav {
     top: 0;
     left: 0;
     z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
     gap: 20px;
 }
 
@@ -45,8 +54,22 @@ nav ul li a:hover {
     background-color: #444;
 }
 
-/* Detail Container */
-.detail-container {
+/* Dark mode button */
+#dark-mode-toggle {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#dark-mode-toggle:hover {
+    background-color: #666;
+}
+
+/* Container */
+.chapter-container {
     max-width: 800px;
     margin: 80px auto;
     padding: 20px;
@@ -56,76 +79,31 @@ nav ul li a:hover {
     text-align: center;
 }
 
-.comic-card {
-    margin-bottom: 20px;
+body.dark-mode .chapter-container {
+    background: #333;
 }
 
-.comic-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-.sinopsis {
-    font-size: 16px;
-    margin: 10px 0;
-    color: #666;
-}
-
-.chapters {
+/* Navigation buttons */
+.navigation {
     margin-top: 20px;
 }
 
-.chapters h2 {
-    font-size: 22px;
-    margin-bottom: 10px;
+.navigation button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
 }
 
-.chapters ul {
-    list-style: none;
-    padding: 0;
+.navigation button:hover {
+    background-color: #0056b3;
 }
 
-.chapters li {
-    margin: 5px 0;
+.navigation select {
+    padding: 8px;
+    font-size: 16px;
 }
-
-.chapters a {
-    text-decoration: none;
-    font-size: 18px;
-    color: #007BFF;
-    transition: 0.3s;
-}
-
-.chapters a:hover {
-    color: #0056b3;
-}
-
-/* Default Light Mode */
-body {
-    background-color: #f5f5f5;
-    color: #333;
-}
-
-/* Dark Mode */
-body.dark-mode {
-    background-color: #333;
-    color: #f5f5f5;
-}
-
-nav.dark-mode {
-    background-color: #444;
-}
-
-nav ul li a.dark-mode {
-    color: #fff;
-}
-
-button.dark-mode {
-    background-color: #444;
-    color: #fff;
-}
-
-</style>
-
-
