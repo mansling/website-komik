@@ -18,8 +18,7 @@
 
     <div class="chapter-container">
         <h1 id="chapterTitle"></h1>
-        <img id="chapterImage" src="" alt="Chapter Image">
-        
+        <img id="chapterImage" src="" alt="Chapter Image">      
         <!-- Tombol Navigasi -->
         <div class="navigation">
             <button id="prevChapter">⬅️ Sebelumnya</button>
@@ -38,6 +37,8 @@
         // Set gambar sesuai chapter
         const imageSrc = `images/${comicTitle}_ch${chapterNumber}.jpg`;
         document.getElementById("chapterImage").src = imageSrc;
+
+        console.log("Image Source: ", imageSrc);
 
         // Navigasi tombol
         document.getElementById("prevChapter").addEventListener("click", function() {
