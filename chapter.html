@@ -18,7 +18,10 @@
 
     <div class="chapter-container">
         <h1 id="chapterTitle"></h1>
-        <p>Isi komik di sini...</p>
+        <div class="navigation">
+            <button id="prevChapter">⬅️ Sebelumnya</button>
+            <button id="nextChapter">➡️ Berikutnya</button>
+        </div>
         <img id="chapterImage" src="" alt="Chapter Image">
     </div>
 
@@ -35,6 +38,25 @@
         // Atur judul dan gambar
         document.getElementById("chapterTitle").innerText = comicTitle;
         document.getElementById("chapterImage").src = `images/${formattedTitle}.jpg`;
+        const currentParams = new URLSearchParams(window.location.search);
+        const currentTitle = currentParams.get("title") || "Judul Komik 1 - Chapter 1";
+        
+        const currentChapter = parseInt(currentParams.get("chapter")) || 1;
+        const comicName = currentParams.get("komik") || "judul_komik_1";
+        
+        document.getElementById("chapterTitle").innerText = currentTitle;
+        
+        // Buat fungsi untuk berpindah chapter
+        document.getElementById("prevChapter").addEventListener("click", function() {
+            if (currentChapter > 1) {
+                window.location.href = `chapter.html?komik=${comicName}&chapter=${currentChapter - 1}`;
+            }
+        });
+        
+        document.getElementById("nextChapter").addEventListener("click", function() {
+            window.location.href = `chapter.html?komik=${comicName}&chapter=${currentChapter + 1}`;
+        });
+
     </script>
 </body>
 </html>
