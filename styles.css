@@ -84,12 +84,10 @@ nav ul li a:hover {
     margin-bottom: 30px;
     font-size: 2em;
 }
-
 #chapterImage {
-    display: block;
-    margin: 0 auto;
-    max-width: 90%;
+    max-width: 100%;
     height: auto;
+    border-radius: 10px;
 }
 
 /* Navigasi */
