@@ -70,3 +70,49 @@ const chapterImages = {
 const chapterImage = document.getElementById('chapterImage');
 chapterImage.src = chapterImages[title] || "images/default.jpg"; // Pakai default kalau tidak ada
 
+const chapterSelect = document.getElementById("chapterSelect");
+const chapterTitle = document.getElementById("chapterTitle");
+const chapterImage = document.getElementById("chapterImage");
+const prevChapter = document.getElementById("prevChapter");
+const nextChapter = document.getElementById("nextChapter");
+
+const params = new URLSearchParams(window.location.search);
+const comicTitle = params.get("komik") || "komik";
+let chapterNumber = parseInt(params.get("chapter")) || 1;
+const totalChapters = 50; // Ganti sesuai jumlah chapter
+
+// Generate daftar chapter
+for (let i = totalChapters; i >= 1; i--) {
+    let option = document.createElement("option");
+    option.value = i;
+    option.textContent = `Chapter ${i}`;
+    chapterSelect.appendChild(option);
+}
+
+// Set default pilihan sesuai URL
+chapterSelect.value = chapterNumber;
+
+// Update tampilan chapter
+function updateChapter(chapter) {
+    chapterNumber = chapter;
+    chapterTitle.textContent = `Chapter ${chapter}`;
+    chapterImage.src = `images/${comicTitle}_ch${chapter}.jpg`;
+}
+
+// Ganti chapter saat dropdown dipilih
+chapterSelect.addEventListener("change", function () {
+    window.location.href = `chapter.html?komik=${comicTitle}&chapter=${this.value}`;
+});
+
+// Navigasi tombol
+prevChapter.addEventListener("click", function () {
+    if (chapterNumber > 1) {
+        window.location.href = `chapter.html?komik=${comicTitle}&chapter=${chapterNumber - 1}`;
+    }
+});
+
+nextChapter.addEventListener("click", function () {
+    if (chapterNumber < totalChapters) {
+        window.location.href = `chapter.html?komik=${comicTitle}&chapter=${chapterNumber + 1}`;
+    }
+});
