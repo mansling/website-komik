@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Chapter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="popular.html">🔥 Popular</a></li>
+            <li><a href="genres.html">📚 Genres</a></li>
+            <li><a href="about.html">ℹ️ About</a></li>
+        </ul>
+    </nav>
+
+    <div class="chapter-list">
+        <h1>Daftar Chapter</h1>
+        <ul id="chapterLinks"></ul>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const comicTitle = params.get("komik") || "judul_komik_1";
+        const chapterCount = 10; // Ubah jumlah chapter sesuai kebutuhan
+
+        const chapterLinks = document.getElementById("chapterLinks");
+        for (let i = 1; i <= chapterCount; i++) {
+            const li = document.createElement("li");
+            li.innerHTML = `<a href="chapter.html?komik=${comicTitle}&chapter=${i}">Chapter ${i}</a>`;
+            chapterLinks.appendChild(li);
+        }
+    </script>
+</body>
+</html>
