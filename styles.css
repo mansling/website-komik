@@ -1,91 +1,11 @@
 /* Reset default margin dan padding */
 body {
     margin: 0;
-    padding: 0; /* Perbaiki ketikan "pandding" jadi "padding" */
+    padding: 0;
     font-family: Arial, sans-serif;
 }
 
-/* Header */
-header {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-/* Grid untuk daftar komik */
-.comic-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    max-width: 900px;
-    margin: auto;
-}
-
-/* Card komik */
-.comic {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Pusatkan gambar */
-    text-align: center;
-    margin: 20px auto; /* Tambahkan margin supaya rapi */
-}
-
-.comic img {
-    max-width: 40%;  /* Ubah ke 40% agar proporsional */
-    height: auto;
-    border-radius: 10px;
-    display: block;
-}
-.comic h2 {
-    margin-top: 10px;
-    font-size: 16px;
-}
-.comic-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    max-width: 900px;
-    margin: auto;
-    justify-content: center;
-}
-
-/* Hover efek */
-.comic:hover {
-    transform: scale(1.05);
-}
-
-/* Footer */
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    margin-top: 20px;
-}
-
-/* Dark mode styling */
-.dark-mode {
-    background-color: #121212;
-    color: white;
-}
-
-/* Header & Footer Dark Mode */
-.dark-mode header,
-.dark-mode footer {
-    background-color: #222;
-}
-
-/* Card Dark Mode */
-.dark-mode .comic {
-    background-color: #333;
-    color: white;
-    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
-}
-
-/* Navbar Styling */
+/* Navbar */
 nav {
     background-color: #222;
     padding: 10px 0;
@@ -123,7 +43,12 @@ nav ul li a:hover {
     background-color: #444;
 }
 
-/* Biar navbar tetap bagus di Dark Mode */
+/* Dark Mode */
+.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
 .dark-mode nav {
     background-color: #121212;
 }
@@ -134,138 +59,42 @@ nav ul li a:hover {
 
 /* Content */
 .content {
-    margin-top: 80px; /* Tambah jarak supaya nggak ketutupan navbar */
+    margin-top: 80px;
     text-align: center;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 10px; /* Biar ada space di sisi kanan kiri */
+    padding: 0 10px;
 }
 
-.content h1 {
-    margin: 0; /* Hilangin margin */
-    padding: 0; /* Hilangin padding */
-    text-align: center;
-    border: none; /* Hilangin border */
-}
-.search-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    max-width: 300px;
-    margin: 10px auto;
-}
-
-#searchBar {
-    width: 100%;
-    padding: 8px 35px 8px 10px; 
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#clearSearch {
-    position: absolute;
-    right: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    display: none; /* Disembunyikan dulu */
-}
-/* Untuk gambar di halaman utama, pastikan ukurannya pas */
-.comic-grid img {
-    width: 100%;        /* Gambar akan menyesuaikan dengan lebar kontainer */
-    max-width: 150px;   /* Batasi lebar gambar maksimal jadi 150px */
-    height: auto;       /* Menjaga rasio gambar tetap */
-    display: block;     /* Agar gambar tidak terganggu elemen lain */
-    margin: 10px auto;  /* Memberikan jarak dan memusatkan gambar */
-    border-radius: 8px; /* Membuat sudut gambar lebih halus */
-}
-
-/* Untuk gambar di detail komik bisa pakai aturan yang lebih besar */
-.comic-image {
-    max-width: 100%;
+/* Gambar Responsif */
+.comic img {
+    max-width: 40%;
     height: auto;
+    border-radius: 10px;
     display: block;
     margin: 10px auto;
-    border-radius: 10px;
 }
 
-.detail-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Pusatkan konten */
-    text-align: center;
-    margin: 20px auto;
-    max-width: 600px; /* Atur agar tidak terlalu lebar */
-}
-
-.detail-container img {
-    max-width: 60%; /* Batasi ukuran gambar */
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tambahkan shadow agar lebih estetik */
-}
-
-.detail-container h1 {
-    font-size: 24px;
-    margin-top: 15px;
-}
-
-.detail-container p {
-    font-size: 18px;
-    color: #666;
-}
-
-.chapters {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.chapters h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.chapters ul {
-    list-style: none;
-    padding: 0;
-}
-
-.chapters ul li {
-    margin: 5px 0;
-}
-
-.chapters ul li a {
-    text-decoration: none;
-    color: blue;
-    font-size: 16px;
-}
-
-.chapters ul li a:hover {
-    text-decoration: underline;
-}
+/* Container Chapter */
 .chapter-container {
     text-align: center;
-    margin-top: 50px; /* Beri jarak lebih besar dari atas */
+    margin-top: 50px;
 }
 
 #chapterTitle {
-    margin-bottom: 30px; /* Jarak lebih besar antara judul dan gambar */
-    font-size: 2em; /* Bikin judul lebih besar kalau perlu */
+    margin-bottom: 30px;
+    font-size: 2em;
 }
 
 #chapterImage {
     display: block;
-    margin: 0 auto; /* Pusatkan gambar */
+    margin: 0 auto;
     max-width: 90%;
     height: auto;
 }
-.chapter-container {
-    text-align: center;
-    padding: 20px;
-}
 
+/* Navigasi */
 .navigation {
     margin-top: 10px;
 }
@@ -274,4 +103,3 @@ nav ul li a:hover {
     padding: 5px;
     font-size: 16px;
 }
-
