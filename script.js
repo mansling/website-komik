@@ -44,8 +44,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ================== LOAD DETAIL KOMIK ==================
     const params = new URLSearchParams(window.location.search);
-    const comicTitle = params.get("title") || "Judul Komik";
-    const comicImage = params.get("image") || "images/default.jpg";
+    const comicTitle = params.get("komik") || "Judul Komik";
+    const chapterNumber = parseInt(params.get("chapter")) || 1;
 
     const titleElement = document.getElementById("comicTitle");
     const imageElement = document.getElementById("comicImage");
@@ -53,7 +53,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (titleElement && imageElement) {
         titleElement.innerText = comicTitle;
-        imageElement.src = comicImage;
+        imageElement.src = `images/${comicTitle.replace(/\s+/g, "_")}.jpg`;
+        imageElement.onerror = function () {
+            imageElement.src = "images/not-found.jpg";
+        };
     }
 
     // Data contoh daftar chapter
@@ -69,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     if (chapterList && chaptersData[comicTitle]) {
-        chapterList.innerHTML = ""; // Kosongkan dulu
+        chapterList.innerHTML = "";
         chaptersData[comicTitle].forEach(chapter => {
             const li = document.createElement("li");
             const a = document.createElement("a");
@@ -81,9 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ================== NAVIGASI CHAPTER ==================
-    const chapterNumber = parseInt(params.get("chapter")) || 1;
-    const totalChapters = 224; // Ubah sesuai jumlah chapter komik yang sebenarnya
-
+    const totalChapters = 224; // Ubah sesuai jumlah chapter yang sebenarnya
     const chapterTitle = document.getElementById("chapterTitle");
     const chapterImage = document.getElementById("chapterImage");
     const prevChapter = document.getElementById("prevChapter");
@@ -92,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (chapterTitle && chapterImage) {
         chapterTitle.textContent = `Chapter ${chapterNumber}`;
-        chapterImage.src = `images/${comicTitle}_ch${chapterNumber}.jpg`;
+        chapterImage.src = `images/${comicTitle.replace(/\s+/g, "_")}_ch${chapterNumber}.jpg`;
 
         // Placeholder jika gambar tidak ditemukan
         chapterImage.onerror = function () {
@@ -100,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     }
 
-    // Dropdown chapter (dari besar ke kecil)
+    // Dropdown chapter
     if (chapterSelect) {
         for (let i = totalChapters; i >= 1; i--) {
             let option = document.createElement("option");
