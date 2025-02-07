@@ -99,20 +99,24 @@ function updateChapter(chapter) {
     chapterImage.src = `images/${comicTitle}_ch${chapter}.jpg`;
 }
 
-// Ganti chapter saat dropdown dipilih
-chapterSelect.addEventListener("change", function () {
-    window.location.href = `chapter.html?komik=${comicTitle}&chapter=${this.value}`;
-});
+document.addEventListener("DOMContentLoaded", function () {
+    const chapterSelect = document.getElementById("chapterSelect");
+    const params = new URLSearchParams(window.location.search);
+    const comicTitle = params.get("komik") || "judul_komik_1";
+    let chapterNumber = parseInt(params.get("chapter")) || 1;
+    const totalChapters = 224; // Ganti sesuai jumlah chapter sebenarnya
 
-// Navigasi tombol
-prevChapter.addEventListener("click", function () {
-    if (chapterNumber > 1) {
-        window.location.href = `chapter.html?komik=${comicTitle}&chapter=${chapterNumber - 1}`;
+    // Generate daftar chapter di dropdown
+    for (let i = totalChapters; i >= 1; i--) {
+        let option = document.createElement("option");
+        option.value = i;
+        option.textContent = `Chapter ${i}`;
+        if (i === chapterNumber) option.selected = true;
+        chapterSelect.appendChild(option);
     }
-});
 
-nextChapter.addEventListener("click", function () {
-    if (chapterNumber < totalChapters) {
-        window.location.href = `chapter.html?komik=${comicTitle}&chapter=${chapterNumber + 1}`;
-    }
+    // Pindah chapter saat dropdown dipilih
+    chapterSelect.addEventListener("change", function () {
+        window.location.href = `chapter.html?komik=${comicTitle}&chapter=${this.value}`;
+    });
 });
