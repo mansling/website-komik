@@ -245,3 +245,14 @@ nav ul li a:hover {
 .chapters ul li a:hover {
     text-decoration: underline;
 }
+.chapter-container {
+    text-align: center; /* Pusatkan teks */
+    margin-top: 20px; /* Beri jarak dari atas */
+}
+
+#chapterImage {
+    display: block;
+    margin: 20px auto; /* Pusatkan gambar */
+    max-width: 90%; /* Biar nggak terlalu besar */
+    height: auto;
+}
