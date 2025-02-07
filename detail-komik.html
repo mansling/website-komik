@@ -17,27 +17,24 @@
         <li><button id="dark-mode-toggle">🌙 Dark Mode</button></li>
     </ul>
 </nav>
+
 <div class="detail-container">
-    <img id="comicImage" src="" alt="Detail Komik" class="comic-image">
-    <h1 id="comicTitle"></h1>
-    <p>Sinopsis komik ini...</p>
+    <div class="comic-card">
+        <img id="comicImage" src="" alt="Detail Komik" class="comic-image">
+        <h1 id="comicTitle"></h1>
+        <p class="sinopsis">Sinopsis komik ini...</p>
+    </div>
     <div class="chapters">
-    <h2>Chapters</h2>
-    <ul id="chapterList"></ul> <!-- Ini harus ada agar JavaScript bisa mengisinya -->
-
-
+        <h2>Chapters</h2>
+        <ul id="chapterList"></ul>
+    </div>
 </div>
-
-</div>
-
 
 <script>
-    // Ambil parameter dari URL
     const params = new URLSearchParams(window.location.search);
     document.getElementById('comicTitle').innerText = params.get('title') || "Judul Komik";
     document.getElementById('comicImage').src = params.get('image') || "images/default.jpg";
-
-    // Contoh daftar chapter berdasarkan judul komik
+    
     const chaptersData = {
         "Judul Komik 1": [
             { number: 1, link: "chapter.html?title=Judul Komik 1 - Chapter 1" },
@@ -49,7 +46,6 @@
         ]
     };
 
-    // Ambil daftar chapter sesuai komik yang sedang dibuka
     const comicTitle = params.get('title');
     const chapterList = document.getElementById('chapterList');
 
