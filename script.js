@@ -62,11 +62,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const chapterList = document.getElementById("chapter-list");
             chapterList.innerHTML = "";
-            comic.chapters.forEach(chap => {
-                const li = document.createElement("li");
-                li.innerHTML = `<a href="chapter.html?id=${comic.id}&chapter=${chap.number}">${chap.title}</a>`;
-                chapterList.appendChild(li);
-            });
+            
+            if (comic.chapters && comic.chapters.length > 0) {
+                comic.chapters.forEach(chap => {
+                    const li = document.createElement("li");
+                    li.innerHTML = `<a href="chapter.html?id=${comic.id}&chapter=${chap.number}">${chap.title}</a>`;
+                    chapterList.appendChild(li);
+                });
+            } else {
+                chapterList.innerHTML = "<p>Belum ada chapter.</p>";
+            }
         }
     }
 
