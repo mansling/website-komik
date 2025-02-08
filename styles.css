@@ -4,6 +4,13 @@ body {
     background-color: #f5f5f5;
     color: #333;
     text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background: #333;
+    padding: 10px 0;
 }
 
 nav ul {
@@ -11,9 +18,88 @@ nav ul {
     display: flex;
     justify-content: center;
     gap: 20px;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a, nav ul li button {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+nav ul li a:hover, nav ul li button:hover {
+    background: #555;
+}
+
+#comic-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.comic-item {
+    width: 250px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.comic-item:hover {
+    transform: scale(1.05);
+}
+
+.comic-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.comic-item h2 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.comic-item p {
+    font-size: 14px;
+    color: #555;
+}
+
+.comic-item a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.comic-item a:hover {
+    background: #0056b3;
 }
 
 .dark-mode {
     background-color: #222;
     color: #fff;
+}
+
+.dark-mode nav {
+    background: #111;
+}
+
+.dark-mode .comic-item {
+    background: #333;
+    color: white;
 }
