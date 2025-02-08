@@ -52,9 +52,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Tampilkan detail komik di detail.html
     function loadComicDetail(comics) {
+        console.log("loadComicDetail() running...");
+        console.log("Comic ID:", comicId);
+        console.log("Comic Data:", comic);
+        console.log("Chapter List:", comic ? comic.chapters : "Comic not found");
+
         const comicId = getQueryParam("id");
         const comic = comics.find(c => c.id == comicId);
-        
+
+
         if (comic) {
             document.getElementById("comic-title").textContent = comic.title;
             document.getElementById("comic-cover").src = comic.cover;
