@@ -45,31 +45,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Fungsi untuk menampilkan detail komik di detail.html
-    function loadComicDetail(comics) {
-        const comicId = getQueryParam("id");
-        const comic = comics.find(item => item.id == comicId);
-
-        if (!comic) {
-            document.getElementById("comic-title").textContent = "Komik tidak ditemukan.";
-            return;
+        // Load Comic Detail Page
+        function loadComicDetail(comics) {
+            const comicId = getQueryParam("id");
+            const comic = comics.find(item => item.id == comicId);
+            
+            if (!comic) {
+                document.getElementById("comic-title").textContent = "Komik tidak ditemukan.";
+                return;
+            }
+        
+            document.getElementById("comic-title").textContent = comic.title;
+            document.getElementById("comic-cover").src = comic.cover;
+            document.getElementById("comic-description").textContent = comic.description || "Deskripsi tidak tersedia.";
+            
+            const readNowButton = document.getElementById("read-now");
+            const chapterListElement = document.getElementById("chapter-list");
+            chapterListElement.innerHTML = "";
+            
+            if (comic.chapters && comic.chapters.length > 0) {
+                // Ubah link "Baca Sekarang" ke chapter pertama
+                readNowButton.href = `chapter.html?id=${comic.id}&chapter=1`;
+            } else {
+                readNowButton.style.display = "none"; // Sembunyikan tombol jika tidak ada chapter
+            }
+            
+            comic.chapters?.forEach((chapter) => {
+                const chapterItem = document.createElement("li");
+                const chapterLink = document.createElement("a");
+                chapterLink.href = `chapter.html?id=${comic.id}&chapter=${chapter.number}`;
+                chapterLink.textContent = `Chapter ${chapter.number}`;
+                chapterItem.appendChild(chapterLink);
+                chapterListElement.appendChild(chapterItem);
+            });
         }
-
-        document.getElementById("comic-title").textContent = comic.title;
-        document.getElementById("comic-cover").src = comic.cover;
-        document.getElementById("comic-description").textContent = comic.description || "Deskripsi tidak tersedia.";
-
-        const chapterListElement = document.getElementById("chapter-list");
-        chapterListElement.innerHTML = "";
-
-        comic.chapters.forEach(chapter => {
-            const li = document.createElement("li");
-            const link = document.createElement("a");
-            link.href = `chapter.html?id=${comicId}&chapter=${chapter.number}`;
-            link.textContent = `Chapter ${chapter.number}`;
-            li.appendChild(link);
-            chapterListElement.appendChild(li);
-        });
-    }
 
     // Fungsi untuk menampilkan daftar chapter di chapters.html
     function loadChaptersList(comics) {
