@@ -301,3 +301,24 @@ nav ul li a:hover, nav ul li button:hover {
 .read-button:hover {
     background: #0056b3;
 }
+.comic-detail-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Jarak antara gambar dan teks */
+    max-width: 800px;
+    margin: auto;
+}
+
+#comic-cover {
+    max-width: 250px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#comic-description {
+    flex: 1;
+    font-size: 16px;
+    color: #333;
+    text-align: left;
+}
