@@ -203,10 +203,9 @@ nav ul li a:hover, nav ul li button:hover {
 .comic-info p {
     font-size: 16px;
     color: #666;
-    margin: 5px 0;
-    margin-bottom: 10px; /* Tambahkan jarak antar teks */
+    margin: 10px 0;
+    padding-bottom: 5px; /* Tambahkan sedikit ruang di bawah */
 }
-
 .synopsis {
     font-size: 14px;
     color: #444;
