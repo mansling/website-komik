@@ -23,7 +23,12 @@
         <p>Baca komik favoritmu dengan kualitas terbaik!</p>
     </header>
     
-    <section class="comic-list">
+    <section class="search-bar">
+        <input type="text" id="search-input" placeholder="Cari judul komik...">
+        <button onclick="searchComics()">🔍 Cari</button>
+    </section>
+    
+    <section class="comic-list" id="comic-list">
         <div class="comic-item">
             <img src="images/sample1.jpg" alt="Komik 1">
             <h2>Judul Komik 1</h2>
@@ -37,6 +42,22 @@
             <a href="detail.html">Baca Sekarang</a>
         </div>
     </section>
+    
+    <script>
+        function searchComics() {
+            let input = document.getElementById('search-input').value.toLowerCase();
+            let comics = document.querySelectorAll('.comic-item');
+            
+            comics.forEach(comic => {
+                let title = comic.querySelector('h2').textContent.toLowerCase();
+                if (title.includes(input)) {
+                    comic.style.display = "block";
+                } else {
+                    comic.style.display = "none";
+                }
+            });
+        }
+    </script>
     
     <script src="script.js"></script>
 </body>
