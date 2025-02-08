@@ -5,8 +5,8 @@
     "cover": "images/komik-a.jpg",
     "description": "Ini adalah deskripsi Komik A.",
     "chapters": [
-      { "number": 1, "title": "Chapter 1", "url": "chapter.html?id=1&chapter=1" },
-      { "number": 2, "title": "Chapter 2", "url": "chapter.html?id=1&chapter=2" }
+      { "number": 1, "title": "Chapter 1", "image": "images/chapter1.jpg" },
+      { "number": 2, "title": "Chapter 2", "image": "images/chapter2.jpg" }
     ]
   },
   {
@@ -15,7 +15,7 @@
     "cover": "images/komik-b.jpg",
     "description": "Ini adalah deskripsi Komik B.",
     "chapters": [
-      { "number": 1, "title": "Chapter 1", "url": "chapter.html?id=2&chapter=1" }
+      { "number": 1, "title": "Chapter 1", "image": "images/chapter1-b.jpg" }
     ]
   }
 ]
