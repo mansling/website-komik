@@ -164,17 +164,17 @@ nav ul li a:hover, nav ul li button:hover {
 /* Comic Detail Page */
 .comic-detail-container {
     display: flex;
-    align-items: flex-start;
-    justify-content: center; /* Pusatkan isi */
+    align-items: center; /* Pusatkan isi */
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 20px;
     max-width: 900px;
-    margin: 20px auto; /* Tengah di layar */
-    flex-wrap: wrap;
+    margin: 20px auto;
     background: #fff;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    text-align: left;
+    text-align: center; /* Biar isi di tengah */
 }
 .comic-cover {
     width: 300px;
