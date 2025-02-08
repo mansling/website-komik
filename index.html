@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -6,50 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beranda - Website Komik</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Tambahkan Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">🏠 Home</a></li>
-            <li><a href="popular.html">🔥 Popular</a></li>
-            <li><a href="genres.html">📚 Genres</a></li>
-            <li><a href="about.html">ℹ️ About</a></li>
-            <li><button id="dark-mode-toggle">🌙 Dark Mode</button></li>
-        </ul>
+    <!-- Navbar Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">📖 KomikZone</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">🏠 Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="popular.html">🔥 Popular</a></li>
+                    <li class="nav-item"><a class="nav-link" href="genres.html">📚 Genres</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">ℹ️ About</a></li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-light" id="dark-mode-toggle">🌙 Dark Mode</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
-    
-    <header class="hero">
+
+    <header class="text-center p-4">
         <h1>Selamat Datang di Website Komik</h1>
         <p>Baca komik favoritmu dengan kualitas terbaik!</p>
     </header>
     
-    <section class="search-bar">
-        <input type="text" id="search-input" placeholder="Cari judul komik...">
-        <button onclick="searchComics()">🔍 Cari</button>
+    <section class="container my-4">
+        <div class="input-group mb-3">
+            <input type="text" id="search-input" class="form-control" placeholder="Cari judul komik...">
+            <button class="btn btn-primary" onclick="searchComics()">🔍 Cari</button>
+        </div>
     </section>
     
-    <section class="comic-list" id="comic-list">
-        <div class="comic-item">
-            <img src="images/komik-a.jpg" alt="Komik 1">
-            <h2>Judul Komik 1</h2>
-            <p>Genre: Aksi, Fantasi</p>
-            <a href="detail.html">Baca Sekarang</a>
-        </div>
-        <div class="comic-item">
-            <img src="images/komik-b.jpg" alt="Komik 2">
-            <h2>Judul Komik 2</h2>
-            <p>Genre: Petualangan, Isekai</p>
-            <a href="detail.html">Baca Sekarang</a>
+    <section class="container">
+        <div class="row" id="comic-list">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/komik-a.jpg" class="card-img-top" alt="Komik 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Judul Komik 1</h5>
+                        <p class="card-text">Genre: Aksi, Fantasi</p>
+                        <a href="detail.html" class="btn btn-primary">Baca Sekarang</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/komik-b.jpg" class="card-img-top" alt="Komik 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Judul Komik 2</h5>
+                        <p class="card-text">Genre: Petualangan, Isekai</p>
+                        <a href="detail.html" class="btn btn-primary">Baca Sekarang</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Tambahkan Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
         function searchComics() {
             let input = document.getElementById('search-input').value.toLowerCase();
-            let comics = document.querySelectorAll('.comic-item');
+            let comics = document.querySelectorAll('.card');
             
             comics.forEach(comic => {
-                let title = comic.querySelector('h2').textContent.toLowerCase();
+                let title = comic.querySelector('.card-title').textContent.toLowerCase();
                 if (title.includes(input)) {
                     comic.style.display = "block";
                 } else {
