@@ -182,6 +182,13 @@ nav ul li a:hover, nav ul li button:hover {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+#comic-cover {
+    width: 100%;  /* Sesuaikan lebar dengan container */
+    max-width: 300px; /* Atur batas maksimum */
+    height: auto; /* Biar proporsional */
+    display: block; /* Biar nggak ada space aneh */
+    margin: 0 auto; /* Biar ada di tengah */
+}
 
 .comic-info {
     flex: 1;
