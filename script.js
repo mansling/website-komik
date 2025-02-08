@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const chapterItem = document.createElement("li");
                     const chapterLink = document.createElement("a");
                     chapterLink.href = `chapter.html?id=${comic.id}&chapter=${chapter.number}`;
-                    chapterLink.textContent = `Chapter ${chapter.number} - ${chapter.title}`;
+                    chapterLink.textContent = `Chapter ${chapter.number}`;
                     chapterItem.appendChild(chapterLink);
                     chapterListElement.appendChild(chapterItem);
                 });
