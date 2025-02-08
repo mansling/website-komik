@@ -50,31 +50,53 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    function loadComicDetail(comics) {
-        const comicId = getQueryParam("id");
-        const comic = comics.find(c => c.id == comicId);
+    document.addEventListener("DOMContentLoaded", function () {
+        // Ambil ID komik dari URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const comicId = urlParams.get("id");
     
-        if (comic) {
-            document.getElementById("comic-title").textContent = comic.title;
-            document.getElementById("comic-cover").src = comic.cover;
-            document.getElementById("comic-description").textContent = comic.description;
+        // Ambil elemen yang akan diisi
+        const titleElement = document.getElementById("comic-title");
+        const coverElement = document.getElementById("comic-cover");
+        const descriptionElement = document.getElementById("comic-description");
+        const chapterListElement = document.getElementById("chapter-list");
     
-            const chapterList = document.getElementById("chapter-list");
-            chapterList.innerHTML = "";
+        // Ambil data dari data.json
+        fetch("data.json")
+            .then(response => response.json())
+            .then(data => {
+                // Cari komik berdasarkan ID
+                const comic = data.find(item => item.id == comicId);
     
-            if (comic.chapters && comic.chapters.length > 0) {
-                comic.chapters.forEach(chap => {
-                    const li = document.createElement("li");
-                    li.innerHTML = `<a href="chapter.html?id=${comic.id}&chapter=${chap.number}">${chap.title}</a>`;
-                    chapterList.appendChild(li);
-                });
-            } else {
-                chapterList.innerHTML = "<p>Belum ada chapter.</p>";
-            }
-        } else {
-            console.error("Comic not found!");
-        }
-    }
+                if (comic) {
+                    // Set judul komik
+                    titleElement.textContent = comic.title;
+    
+                    // Set cover komik
+                    coverElement.src = "images/" + comic.cover;
+                    coverElement.alt = comic.title;
+    
+                    // **Perbaikan: Kosongkan elemen deskripsi sebelum diisi**
+                    descriptionElement.textContent = ""; 
+                    descriptionElement.textContent = comic.description;
+    
+                    // Tambahkan daftar chapter
+                    chapterListElement.innerHTML = "";
+                    comic.chapters.forEach((chapter, index) => {
+                        const chapterItem = document.createElement("li");
+                        const chapterLink = document.createElement("a");
+                        chapterLink.href = `chapter.html?id=${comic.id}&chapter=${index + 1}`;
+                        chapterLink.textContent = `Chapter ${index + 1}`;
+                        chapterItem.appendChild(chapterLink);
+                        chapterListElement.appendChild(chapterItem);
+                    });
+                } else {
+                    titleElement.textContent = "Komik tidak ditemukan.";
+                }
+            })
+            .catch(error => console.error("Gagal mengambil data:", error));
+    });
+
 
 
     // Tampilkan chapter di chapter.html
