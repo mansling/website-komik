@@ -164,35 +164,38 @@ nav ul li a:hover, nav ul li button:hover {
 /* Comic Detail Page */
 .comic-detail-container {
     display: flex;
-    align-items: center; /* Pusatkan isi */
+    align-items: flex-start;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 20px;
     max-width: 900px;
     margin: 20px auto;
+    flex-wrap: wrap;
     background: #fff;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    text-align: center; /* Biar isi di tengah */
+    text-align: left;
 }
+
 .comic-cover {
     width: 300px;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 #comic-cover {
-    width: 100%;  /* Sesuaikan lebar dengan container */
-    max-width: 300px; /* Atur batas maksimum */
-    height: auto; /* Biar proporsional */
-    display: block; /* Biar nggak ada space aneh */
-    margin: 0 auto; /* Biar ada di tengah */
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
+
 .comic-info {
     flex: 1;
     min-width: 300px;
-    text-align: left; /* Biar teks rata kiri */
+    text-align: left;
 }
 
 .comic-info h1 {
@@ -200,18 +203,21 @@ nav ul li a:hover, nav ul li button:hover {
     color: #333;
     margin-bottom: 10px;
 }
+
 .comic-info p {
     font-size: 16px;
     color: #666;
     margin: 10px 0;
-    padding-bottom: 5px; /* Tambahkan sedikit ruang di bawah */
+    padding-bottom: 5px;
 }
+
 .synopsis {
     font-size: 14px;
     color: #444;
     margin-top: 15px;
     line-height: 1.5;
 }
+
 .read-button {
     background: #007bff;
     color: white;
@@ -224,7 +230,7 @@ nav ul li a:hover, nav ul li button:hover {
     margin-top: 10px;
     display: inline-block;
     text-align: center;
-    margin-bottom: 20px; /* Tambahkan jarak ke bawah */
+    margin-bottom: 20px;
 }
 
 .read-button {
@@ -232,13 +238,13 @@ nav ul li a:hover, nav ul li button:hover {
 }
 
 /* Chapter List */
-
 #chapter-list {
     list-style: none;
     padding: 0;
-    margin-top: 20px; /* Tambahkan jarak dari tombol */
-     padding-left: 15px; /* Supaya daftar lebih rapi */
+    margin-top: 20px;
+    padding-left: 15px;
 }
+
 #chapter-list li {
     margin: 5px 0;
 }
