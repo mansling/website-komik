@@ -25,9 +25,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 loadComicDetail(comics);
             } else if (window.location.pathname.includes("chapter.html")) {
                 loadChapter(comics);
+            } else {
+                loadComicList(comics);
             }
         })
         .catch(error => console.error("Error loading data:", error));
+
+    // Tampilkan daftar komik di index.html
+    function loadComicList(comics) {
+        const comicContainer = document.getElementById("comic-list");
+        if (!comicContainer) return;
+        
+        comicContainer.innerHTML = "";
+        comics.forEach(comic => {
+            const div = document.createElement("div");
+            div.classList.add("comic-item");
+            div.innerHTML = `
+                <a href="detail.html?id=${comic.id}">
+                    <img src="${comic.cover}" alt="${comic.title}">
+                    <h3>${comic.title}</h3>
+                </a>
+            `;
+            comicContainer.appendChild(div);
+        });
+    }
 
     // Tampilkan detail komik di detail.html
     function loadComicDetail(comics) {
@@ -43,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
             chapterList.innerHTML = "";
             comic.chapters.forEach(chap => {
                 const li = document.createElement("li");
-                li.innerHTML = `<a href="${chap.url}">${chap.title}</a>`;
+                li.innerHTML = `<a href="chapter.html?id=${comic.id}&chapter=${chap.number}">${chap.title}</a>`;
                 chapterList.appendChild(li);
             });
         }
@@ -59,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const chapter = comic.chapters.find(chap => chap.number == chapterNum);
             if (chapter) {
                 document.getElementById("chapter-title").textContent = chapter.title;
+                document.getElementById("chapter-content").innerHTML = `<img src="${chapter.image}" alt="${chapter.title}">`;
             }
         }
     }
