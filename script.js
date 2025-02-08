@@ -194,6 +194,27 @@ document.addEventListener("DOMContentLoaded", function () {
         
         // Panggil loadComments saat halaman dibuka
         loadComments();
+              async function loadHeaderFooter() {
+                  const headerContainer = document.getElementById('header-container');
+                  const footerContainer = document.getElementById('footer-container');
+              
+                  try {
+                      const headerResponse = await fetch('header.html');
+                      const footerResponse = await fetch('footer.html');
+              
+                      if (!headerResponse.ok || !footerResponse.ok) {
+                          throw new Error('Gagal memuat header atau footer');
+                      }
+              
+                      headerContainer.innerHTML = await headerResponse.text();
+                      footerContainer.innerHTML = await footerResponse.text();
+                  } catch (error) {
+                      console.error('Terjadi kesalahan:', error);
+                  }
+              }
+              
+              // Panggil fungsi saat halaman selesai dimuat
+              document.addEventListener("DOMContentLoaded", loadHeaderFooter);
 
 
 });
