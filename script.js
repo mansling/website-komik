@@ -163,5 +163,37 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.href = `chapter.html?id=${comicId}&chapter=${selectedChapter}`;
         };
     }
+            // --- Fitur Komentar ---
+        const commentInput = document.getElementById("comment-input");
+        const submitComment = document.getElementById("submit-comment");
+        const commentList = document.getElementById("comment-list");
+        
+    // Load komentar dari localStorage
+        function loadComments() {
+            const comicId = new URLSearchParams(window.location.search).get("id");
+            const comments = JSON.parse(localStorage.getItem(`comments-${comicId}`)) || [];
+            commentList.innerHTML = "";
+            comments.forEach(comment => {
+                const li = document.createElement("li");
+                li.textContent = comment;
+                commentList.appendChild(li);
+            });
+        }
+
+    // Simpan komentar ke localStorage
+        submitComment?.addEventListener("click", function () {
+            const comicId = new URLSearchParams(window.location.search).get("id");
+            let comments = JSON.parse(localStorage.getItem(`comments-${comicId}`)) || [];
+            if (commentInput.value.trim() !== "") {
+                comments.push(commentInput.value.trim());
+                localStorage.setItem(`comments-${comicId}`, JSON.stringify(comments));
+                commentInput.value = "";
+                loadComments();
+            }
+        });
+        
+        // Panggil loadComments saat halaman dibuka
+        loadComments();
+
 
 });
