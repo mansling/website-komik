@@ -103,53 +103,65 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Fungsi untuk menampilkan isi chapter di chapter.html
-    function loadChapter(comics) {
+        function loadChapter(comics) {
         const comicId = getQueryParam("id");
-        const chapterNum = getQueryParam("chapter");
-
+        const chapterNum = parseInt(getQueryParam("chapter"));
+    
         const comic = comics.find(c => c.id == comicId);
         if (!comic) {
-            document.getElementById("chapter-content").innerHTML = "<p>Komik tidak ditemukan.</p>";
+            document.getElementById("chapter-content").textContent = "Komik tidak ditemukan.";
             return;
         }
-
+    
         const chapter = comic.chapters.find(chap => chap.number == chapterNum);
         if (!chapter) {
-            document.getElementById("chapter-content").innerHTML = "<p>Chapter tidak ditemukan.</p>";
+            document.getElementById("chapter-content").textContent = "Chapter tidak ditemukan.";
             return;
         }
-
-        document.getElementById("chapter-title").textContent = `Chapter ${chapter.number}`;
-        document.getElementById("chapter-content").innerHTML = `<img src="${chapter.image}" alt="Chapter ${chapter.number}">`;
-
+    
+        // Set judul chapter
+        document.getElementById("chapter-title").textContent = chapter.title;
+        document.getElementById("chapter-content").innerHTML = `<img src="${chapter.image}" alt="${chapter.title}">`;
+    
         // Navigasi chapter
         const prevBtn = document.getElementById("prevChapter");
         const nextBtn = document.getElementById("nextChapter");
         const chapterSelect = document.getElementById("chapterSelect");
-
-        comic.chapters.forEach(chap => {
+    
+        // Hapus isi dropdown lalu isi ulang dengan semua chapter
+        chapterSelect.innerHTML = "";
+        comic.chapters.forEach((chap) => {
             const option = document.createElement("option");
             option.value = chap.number;
             option.textContent = `Chapter ${chap.number}`;
+            if (chap.number == chapterNum) option.selected = true;
             chapterSelect.appendChild(option);
         });
-
-        chapterSelect.value = chapterNum;
-
+    
+        // Atur tombol navigasi
         if (chapterNum > 1) {
-            prevBtn.onclick = () => window.location.href = `chapter.html?id=${comicId}&chapter=${chapterNum - 1}`;
+            prevBtn.disabled = false;
+            prevBtn.onclick = () => {
+                window.location.href = `chapter.html?id=${comicId}&chapter=${chapterNum - 1}`;
+            };
         } else {
             prevBtn.disabled = true;
         }
-
+    
         if (chapterNum < comic.chapters.length) {
-            nextBtn.onclick = () => window.location.href = `chapter.html?id=${comicId}&chapter=${parseInt(chapterNum) + 1}`;
+            nextBtn.disabled = false;
+            nextBtn.onclick = () => {
+                window.location.href = `chapter.html?id=${comicId}&chapter=${chapterNum + 1}`;
+            };
         } else {
             nextBtn.disabled = true;
         }
-
+    
+        // Navigasi lewat dropdown
         chapterSelect.onchange = () => {
-            window.location.href = `chapter.html?id=${comicId}&chapter=${chapterSelect.value}`;
+            const selectedChapter = chapterSelect.value;
+            window.location.href = `chapter.html?id=${comicId}&chapter=${selectedChapter}`;
         };
     }
+
 });
