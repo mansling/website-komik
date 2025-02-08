@@ -50,25 +50,18 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Tampilkan detail komik di detail.html
     function loadComicDetail(comics) {
-        console.log("loadComicDetail() running...");
-    
         const comicId = getQueryParam("id");
         const comic = comics.find(c => c.id == comicId);
     
-        console.log("Comic ID:", comicId);
-        console.log("Comic Data:", comic);
-        console.log("Chapter List:", comic ? comic.chapters : "Comic not found");
-
         if (comic) {
             document.getElementById("comic-title").textContent = comic.title;
             document.getElementById("comic-cover").src = comic.cover;
             document.getElementById("comic-description").textContent = comic.description;
-
+    
             const chapterList = document.getElementById("chapter-list");
             chapterList.innerHTML = "";
-            
+    
             if (comic.chapters && comic.chapters.length > 0) {
                 comic.chapters.forEach(chap => {
                     const li = document.createElement("li");
@@ -78,8 +71,11 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 chapterList.innerHTML = "<p>Belum ada chapter.</p>";
             }
+        } else {
+            console.error("Comic not found!");
         }
     }
+
 
     // Tampilkan chapter di chapter.html
     function loadChapter(comics) {
