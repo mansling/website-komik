@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "title": "Komik A",
+    "cover": "images/komik-a.jpg",
+    "description": "Ini adalah deskripsi Komik A.",
+    "chapters": [
+      { "number": 1, "title": "Chapter 1", "url": "chapter.html?id=1&chapter=1" },
+      { "number": 2, "title": "Chapter 2", "url": "chapter.html?id=1&chapter=2" }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Komik B",
+    "cover": "images/komik-b.jpg",
+    "description": "Ini adalah deskripsi Komik B.",
+    "chapters": [
+      { "number": 1, "title": "Chapter 1", "url": "chapter.html?id=2&chapter=1" }
+    ]
+  }
+]
