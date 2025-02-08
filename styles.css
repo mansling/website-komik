@@ -189,10 +189,10 @@ nav ul li a:hover, nav ul li button:hover {
     display: block; /* Biar nggak ada space aneh */
     margin: 0 auto; /* Biar ada di tengah */
 }
-
 .comic-info {
     flex: 1;
     min-width: 300px;
+    text-align: left; /* Biar teks rata kiri */
 }
 
 .comic-info h1 {
@@ -200,11 +200,11 @@ nav ul li a:hover, nav ul li button:hover {
     color: #333;
     margin-bottom: 10px;
 }
-
 .comic-info p {
     font-size: 16px;
     color: #666;
     margin: 5px 0;
+    margin-bottom: 10px; /* Tambahkan jarak antar teks */
 }
 
 .synopsis {
@@ -238,8 +238,8 @@ nav ul li a:hover, nav ul li button:hover {
     list-style: none;
     padding: 0;
     margin-top: 20px; /* Tambahkan jarak dari tombol */
+     padding-left: 15px; /* Supaya daftar lebih rapi */
 }
-
 #chapter-list li {
     margin: 5px 0;
 }
