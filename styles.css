@@ -213,7 +213,6 @@ nav ul li a:hover, nav ul li button:hover {
     margin-top: 15px;
     line-height: 1.5;
 }
-
 .read-button {
     background: #007bff;
     color: white;
@@ -224,17 +223,21 @@ nav ul li a:hover, nav ul li button:hover {
     cursor: pointer;
     transition: background 0.3s;
     margin-top: 10px;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 20px; /* Tambahkan jarak ke bawah */
 }
 
-.read-button:hover {
-    background: #0056b3;
+.read-button {
+    display: inline-block;
 }
 
 /* Chapter List */
+
 #chapter-list {
     list-style: none;
     padding: 0;
-    margin-top: 10px;
+    margin-top: 20px; /* Tambahkan jarak dari tombol */
 }
 
 #chapter-list li {
