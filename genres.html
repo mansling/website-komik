@@ -23,7 +23,12 @@
         <p>Temukan komik berdasarkan genre favoritmu!</p>
     </header>
     
-    <section class="genre-list">
+    <section class="search-bar">
+        <input type="text" id="genre-search" placeholder="Cari genre...">
+        <button onclick="filterGenres()">🔍 Cari</button>
+    </section>
+    
+    <section class="genre-list" id="genre-list">
         <div class="genre-item"><a href="#">Aksi</a></div>
         <div class="genre-item"><a href="#">Petualangan</a></div>
         <div class="genre-item"><a href="#">Fantasi</a></div>
@@ -33,6 +38,22 @@
         <div class="genre-item"><a href="#">Horror</a></div>
         <div class="genre-item"><a href="#">Romance</a></div>
     </section>
+    
+    <script>
+        function filterGenres() {
+            let input = document.getElementById('genre-search').value.toLowerCase();
+            let genres = document.querySelectorAll('.genre-item');
+            
+            genres.forEach(genre => {
+                let text = genre.textContent.toLowerCase();
+                if (text.includes(input)) {
+                    genre.style.display = "block";
+                } else {
+                    genre.style.display = "none";
+                }
+            });
+        }
+    </script>
     
     <script src="script.js"></script>
 </body>
