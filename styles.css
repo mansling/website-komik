@@ -301,12 +301,20 @@ nav ul li a:hover, nav ul li button:hover {
 .read-button:hover {
     background: #0056b3;
 }
+
+#comic-description {
+    flex: 1;
+    font-size: 16px;
+    color: #333;
+    text-align: left;
+}
 .comic-detail-container {
     display: flex;
-    align-items: center;
-    gap: 20px; /* Jarak antara gambar dan teks */
+    align-items: flex-start;
+    gap: 20px;
     max-width: 800px;
     margin: auto;
+    flex-wrap: wrap;
 }
 
 #comic-cover {
@@ -316,9 +324,17 @@ nav ul li a:hover, nav ul li button:hover {
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-#comic-description {
-    flex: 1;
-    font-size: 16px;
-    color: #333;
-    text-align: left;
+#chapter-list {
+    list-style: none;
+    padding: 0;
+}
+
+#chapter-list li {
+    margin: 5px 0;
+}
+
+#chapter-list a {
+    text-decoration: none;
+    color: blue;
+    font-weight: bold;
 }
