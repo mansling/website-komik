@@ -22,11 +22,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Fetch data dari JSON
     fetch("data.json")
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Gagal mengambil data JSON");
+            }
+            return response.json();
+        })
         .then(comics => {
-            if (window.location.pathname.includes("detail.html")) {
+            const path = window.location.pathname;
+            if (path.includes("detail.html")) {
                 loadComicDetail(comics);
-            } else if (window.location.pathname.includes("chapter.html")) {
+            } else if (path.includes("chapter.html")) {
                 loadChapter(comics);
             } else {
                 loadComicList(comics);
@@ -52,46 +58,46 @@ document.addEventListener("DOMContentLoaded", function () {
             comicContainer.appendChild(div);
         });
     }
-function loadComicDetail(comics) {
-    const comicId = getQueryParam("id");
-    const comic = comics.find(item => item.id == comicId);
 
-    if (comic) {
-        document.getElementById("comic-title").textContent = comic.title;
-        document.getElementById("comic-cover").src = comic.cover;
-        document.getElementById("comic-description").textContent = comic.description || "Deskripsi tidak tersedia.";
+    function loadComicDetail(comics) {
+        const comicId = getQueryParam("id");
+        const comic = comics.find(item => item.id == comicId);
 
-        const readNowButton = document.getElementById("read-now");
+        if (comic) {
+            document.getElementById("comic-title").textContent = comic.title;
+            document.getElementById("comic-cover").src = comic.cover;
+            document.getElementById("comic-description").textContent = comic.description || "Deskripsi tidak tersedia.";
 
-        // Pastikan komik memiliki chapter
-        if (comic.chapters.length > 0) {
-            readNowButton.href = comic.chapters[0].url; // Arahkan ke chapter pertama
+            const readNowButton = document.getElementById("read-now");
+            const chapterListElement = document.getElementById("chapter-list");
+
+            if (comic.chapters && comic.chapters.length > 0) {
+                readNowButton.href = comic.chapters[0].url;
+            } else {
+                readNowButton.style.display = "none";
+            }
+
+            chapterListElement.innerHTML = "";
+            if (comic.chapters) {
+                comic.chapters.forEach((chapter) => {
+                    const chapterItem = document.createElement("li");
+                    const chapterLink = document.createElement("a");
+                    chapterLink.href = chapter.url;
+                    chapterLink.textContent = `Chapter ${chapter.number}`;
+                    chapterItem.appendChild(chapterLink);
+                    chapterListElement.appendChild(chapterItem);
+                });
+            }
         } else {
-            readNowButton.style.display = "none"; // Sembunyikan jika tidak ada chapter
+            document.getElementById("comic-title").textContent = "Komik tidak ditemukan.";
         }
-
-        // Tampilkan daftar chapter
-        const chapterListElement = document.getElementById("chapter-list");
-        chapterListElement.innerHTML = "";
-        comic.chapters.forEach((chapter) => {
-            const chapterItem = document.createElement("li");
-            const chapterLink = document.createElement("a");
-            chapterLink.href = chapter.url;
-            chapterLink.textContent = `Chapter ${chapter.number}`;
-            chapterItem.appendChild(chapterLink);
-            chapterListElement.appendChild(chapterItem);
-        });
-    } else {
-        document.getElementById("comic-title").textContent = "Komik tidak ditemukan.";
     }
-}
 
-    // Tampilkan chapter di chapter.html
     function loadChapter(comics) {
         const comicId = getQueryParam("id");
         const chapterNum = getQueryParam("chapter");
-
         const comic = comics.find(c => c.id == comicId);
+
         if (comic) {
             const chapter = comic.chapters.find(chap => chap.number == chapterNum);
             if (chapter) {
