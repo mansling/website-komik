@@ -15,24 +15,24 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("Gagal memuat footer:", error));
   
     // Dark Mode
-    function setupDarkMode() {
-        const darkModeToggle = document.getElementById("dark-mode-toggle");
-        const body = document.body;
+    const darkModeToggle = document.getElementById("dark-mode-toggle");
+    const body = document.body;
 
-        if (!darkModeToggle) {
-            console.error("Tombol Dark Mode tidak ditemukan!");
-            return;
-        }
-
-        if (localStorage.getItem("darkMode") === "enabled") {
-            body.classList.add("dark-mode");
-        }
-
-        darkModeToggle.addEventListener("click", function () {
-            body.classList.toggle("dark-mode");
-            localStorage.setItem("darkMode", body.classList.contains("dark-mode") ? "enabled" : "disabled");
-        });
+    // Cek status Dark Mode dari localStorage
+    if (localStorage.getItem("darkMode") === "enabled") {
+        body.classList.add("dark-mode");
     }
+
+    darkModeToggle.addEventListener("click", function () {
+        body.classList.toggle("dark-mode");
+
+        // Simpan status di localStorage
+        if (body.classList.contains("dark-mode")) {
+            localStorage.setItem("darkMode", "enabled");
+        } else {
+            localStorage.setItem("darkMode", "disabled");
+        }
+    });
 
     // Memuat data JSON
     fetch("data/comics.json")
