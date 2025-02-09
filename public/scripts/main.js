@@ -4,6 +4,26 @@ document.addEventListener("DOMContentLoaded", function () {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(param);
     }
+    //dark mode
+    const darkModeToggle = document.getElementById("dark-mode-toggle");
+    const body = document.body;
+
+    // Cek apakah pengguna sudah pernah mengaktifkan dark mode sebelumnya
+    if (localStorage.getItem("darkMode") === "enabled") {
+        body.classList.add("dark-mode");
+    }
+
+    // Saat tombol diklik, aktifkan atau nonaktifkan dark mode
+    darkModeToggle?.addEventListener("click", function () {
+        body.classList.toggle("dark-mode");
+
+        // Simpan preferensi pengguna di localStorage
+        if (body.classList.contains("dark-mode")) {
+            localStorage.setItem("darkMode", "enabled");
+        } else {
+            localStorage.removeItem("darkMode");
+        }
+    });
 
     // Fetch data dari JSON (gunakan path lengkap jika di GitHub Pages)
     fetch("./data.json")
