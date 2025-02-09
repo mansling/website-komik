@@ -49,6 +49,20 @@
     
     <!-- Panggil script.js di akhir body -->
     <script src="scripts/main.js"></script>
+  <script>
+    async function loadComponents() {
+        // Memuat header
+        const headerResponse = await fetch("header.html");
+        document.getElementById("header-container").innerHTML = await headerResponse.text();
+        
+        // Memuat footer
+        const footerResponse = await fetch("footer.html");
+        document.getElementById("footer-container").innerHTML = await footerResponse.text();
+    }
+    
+    loadComponents();
+</script>
+
   
 </body>
 </html>
