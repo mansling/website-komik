@@ -6,39 +6,33 @@ document.addEventListener("DOMContentLoaded", function () {
     // Memuat header dan footer
     fetch("header.html")
         .then(response => response.text())
-        .then(data => {
-            document.getElementById("header-container").innerHTML = data;
-            setupDarkMode(); // Panggil setelah header dimuat
-        })
+        .then(data => document.getElementById("header-container").innerHTML = data)
         .catch(error => console.error("Gagal memuat header:", error));
 
     fetch("footer.html")
         .then(response => response.text())
         .then(data => document.getElementById("footer-container").innerHTML = data)
         .catch(error => console.error("Gagal memuat footer:", error));
-      });
-      
-      function setupDarkMode() {
-          const darkModeToggle = document.getElementById("dark-mode-toggle");
-          const body = document.body;
-      
-          // Cek mode gelap dari localStorage
-          if (localStorage.getItem("darkMode") === "enabled") {
-              body.classList.add("dark-mode");
-              darkModeToggle.innerHTML = "☀️"; // Matahari untuk mode terang
-          }
-      
-          darkModeToggle.addEventListener("click", function () {
-              body.classList.toggle("dark-mode");
-      
-              if (body.classList.contains("dark-mode")) {
-                  localStorage.setItem("darkMode", "enabled");
-                  darkModeToggle.innerHTML = "☀️";
-              } else {
-                  localStorage.setItem("darkMode", "disabled");
-                  darkModeToggle.innerHTML = "🌙";
-              }
-          });
+  
+    // Dark Mode
+    function setupDarkMode() {
+        const darkModeToggle = document.getElementById("dark-mode-toggle");
+        const body = document.body;
+
+        if (!darkModeToggle) {
+            console.error("Tombol Dark Mode tidak ditemukan!");
+            return;
+        }
+
+        if (localStorage.getItem("darkMode") === "enabled") {
+            body.classList.add("dark-mode");
+        }
+
+        darkModeToggle.addEventListener("click", function () {
+            body.classList.toggle("dark-mode");
+            localStorage.setItem("darkMode", body.classList.contains("dark-mode") ? "enabled" : "disabled");
+        });
+    }
 
     // Memuat data JSON
     fetch("data/comics.json")
