@@ -77,6 +77,19 @@ fetch("footer.html")
             comic.style.display = title.includes(query) ? "block" : "none";
         });
     }
+      function toggleSearch() {
+        let searchBar = document.getElementById("searchBar");
+        let navbar = document.querySelector(".navbar");
+    
+        if (searchBar.style.display === "none" || searchBar.style.display === "") {
+            searchBar.style.display = "flex";
+            navbar.classList.add("active");
+        } else {
+            searchBar.style.display = "none";
+            navbar.classList.remove("active");
+        }
+    }
+
 
     // Fungsi untuk memuat daftar komik
     function loadComicList(comics) {
