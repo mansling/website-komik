@@ -134,56 +134,46 @@ nav ul li a:hover, nav ul li button:hover {
     transform: scale(1.05);
 }
 
-/* Dark Mode */
+/* Dark Mode Styles */
 .dark-mode {
-    background-color: #1c1c1c;
-    color: #f5f5f5;
-}
-
-.dark-mode nav {
-    background: #121212;
-}
-
-.dark-mode .comic-item {
-    background: #2a2a2a;
+    background-color: #121212;
     color: white;
 }
 
-.dark-mode .comic-detail-container {
-    background: #2a2a2a;
-    color: white;
+.dark-mode .navbar {
+    background-color: #1f1f1f;
 }
 
-.dark-mode .comic-info p {
-    color: #ccc;
-}
-/* Tambahan untuk Dark Mode */
-.dark-mode body {
-    background-color: #1c1c1c;
-    color: #f5f5f5;
-}
-
-.dark-mode input, 
-.dark-mode .form-control {
+.dark-mode input, .dark-mode textarea {
     background-color: #2a2a2a;
     color: white;
-    border: 1px solid #444;
+    border: 1px solid #555;
 }
 
-.dark-mode .card {
-    background-color: #2a2a2a;
+.dark-mode a {
+    color: #9acd32; /* Warna hijau terang untuk link */
+}
+
+.dark-mode button {
+    background-color: #444;
     color: white;
-    border: 1px solid #444;
+    border: none;
 }
 
-.dark-mode .btn-primary {
-    background-color: #007bff;
-    border-color: #0056b3;
+.dark-mode-toggle {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.dark-mode .btn-primary:hover {
-    background-color: #0056b3;
+.dark-mode-toggle:hover {
+    background: white;
+    color: black;
 }
+
 
 /* Comic Detail Page */
 .comic-detail-container {
