@@ -6,15 +6,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Memuat header dan footer
     fetch("header.html")
         .then(response => response.text())
-        .then(data => {
-            document.getElementById("header-container").innerHTML = data;
-            setupDarkMode(); // Pastikan dark mode tetap berfungsi
-        });
+        .then(data => document.getElementById("header-container").innerHTML = data)
+        .catch(error => console.error("Gagal memuat header:", error));
 
     fetch("footer.html")
         .then(response => response.text())
-        .then(data => document.getElementById("footer-container").innerHTML = data);
-
+        .then(data => document.getElementById("footer-container").innerHTML = data)
+        .catch(error => console.error("Gagal memuat footer:", error));
+  
     // Dark Mode
     function setupDarkMode() {
         const darkModeToggle = document.getElementById("dark-mode-toggle");
