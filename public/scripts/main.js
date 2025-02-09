@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(param);
     }
+      fetch("/src/components/header.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("header-container").innerHTML = data;
+        })
+        .catch(error => console.error("Gagal memuat header:", error));
 
       setTimeout(() => { // Tunggu sejenak supaya header sudah termuat
           const darkModeToggle = document.getElementById("dark-mode-toggle");
