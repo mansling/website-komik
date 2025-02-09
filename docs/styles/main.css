@@ -134,43 +134,55 @@ nav ul li a:hover, nav ul li button:hover {
     transform: scale(1.05);
 }
 
-/* Mode Gelap */
-body.dark-mode {
-    background-color: #1a1a1a;
-    color: #f0f0f0;
-    transition: background-color 0.3s ease, color 0.3s ease;
+/* Dark Mode */
+.dark-mode {
+    background-color: #1c1c1c;
+    color: #f5f5f5;
 }
 
-/* Warna elemen saat mode gelap */
+.dark-mode nav {
+    background: #121212;
+}
+
+.dark-mode .comic-item {
+    background: #2a2a2a;
+    color: white;
+}
+
+.dark-mode .comic-detail-container {
+    background: #2a2a2a;
+    color: white;
+}
+
+.dark-mode .comic-info p {
+    color: #ccc;
+}
+/* Tambahan untuk Dark Mode */
+.dark-mode body {
+    background-color: #1c1c1c;
+    color: #f5f5f5;
+}
+
+.dark-mode input, 
+.dark-mode .form-control {
+    background-color: #2a2a2a;
+    color: white;
+    border: 1px solid #444;
+}
+
 .dark-mode .card {
     background-color: #2a2a2a;
-    color: #ffffff;
+    color: white;
     border: 1px solid #444;
 }
 
 .dark-mode .btn-primary {
     background-color: #007bff;
-    border: none;
+    border-color: #0056b3;
 }
 
-.dark-mode .input-group .form-control {
-    background-color: #333;
-    color: #fff;
-    border: 1px solid #555;
-}
-
-/* Tombol Dark Mode */
-#dark-mode-toggle {
-    cursor: pointer;
-    font-size: 1.5rem;
-    border: none;
-    background: none;
-    color: inherit;
-    transition: transform 0.2s ease;
-}
-
-#dark-mode-toggle:hover {
-    transform: scale(1.1);
+.dark-mode .btn-primary:hover {
+    background-color: #0056b3;
 }
 
 /* Comic Detail Page */
