@@ -11,9 +11,13 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => document.getElementById("footer-container").innerHTML = data);
 
     // Mode Gelap
-    
         const darkModeToggle = document.getElementById("dark-mode-toggle");
         const body = document.body;
+    
+        if (!darkModeToggle) {
+            console.error("Tombol dark mode tidak ditemukan!");
+            return; // Stop eksekusi jika tombol tidak ada
+        }
     
         // Cek apakah pengguna pernah mengaktifkan dark mode sebelumnya
         if (localStorage.getItem("darkMode") === "enabled") {
@@ -30,6 +34,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.setItem("darkMode", "disabled");
             }
         });
+    
+
 
 
     // Fetch Data JSON
