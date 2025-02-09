@@ -49,22 +49,50 @@ nav ul li a:hover, nav ul li button:hover {
     transform: scale(1.1);
 }
 
-/* Search Bar */
-.search-bar {
-    display: flex;
-    align-items: center;
-    margin-left: auto; /* Pindah ke kanan */
-    width: 250px; /* Sesuaikan ukuran */
+/* Search kecil di navbar */
+.search-icon {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    padding: 5px;
 }
 
-.search-bar input {
-    flex: 1;
+/* Search bar besar (awal: tersembunyi) */
+.search-container {
+    width: 100%;
+    background-color: #333;
+    padding: 10px;
+    display: none; /* Awal: disembunyikan */
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.search-container input {
+    width: 300px;
+    padding: 8px;
     border-radius: 5px 0 0 5px;
+    border: 1px solid #ccc;
 }
 
-.search-bar button {
+.search-container button {
+    padding: 8px 15px;
     border-radius: 0 5px 5px 0;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
 }
+
+/* Navbar turun kalau search bar muncul */
+.navbar.active {
+    margin-top: 50px;
+}
+
 
 /* Comic List */
 #comic-list {
