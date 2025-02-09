@@ -1,27 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="input-group search-bar">
-            <input type="text" id="search-input" class="form-control" placeholder="Cari judul komik...">
-            <button class="btn btn-primary" onclick="searchComics()">🔍 Cari</button>
-  </div>  
-  <div class="container-fluid">
-        
-        <a class="navbar-brand" href="index.html">📖 KomikZone</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html">🏠 Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="daftar-pustaka.html">🔥 Daftar Pustaka</a></li>
-                <li class="nav-item"><a class="nav-link" href="bookmark.html">📚 Bookmark</a></li>
-                <li class="nav-item"><a class="nav-link" href="about.html">ℹ️ About</a></li>
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">📖 KomikZone</a>
+            <ul class="nav-links">
+                <li><a href="index.html">🏠 Home</a></li>
+                <li><a href="daftar-pustaka.html">🔥 Daftar Pustaka</a></li>
+                <li><a href="bookmark.html">📚 Bookmark</a></li>
+                <li><a href="about.html">ℹ️ About</a></li>
             </ul>
+            <!-- Tombol Search Kecil -->
+            <button class="search-icon" onclick="toggleSearch()">🔍</button>
             <button id="dark-mode-toggle" class="btn btn-warning px-3">🌙 Dark Mode</button>
-
-
-
         </div>
+    </nav>
+
+    <!-- Search Bar Besar (Default: Tersembunyi) -->
+    <div class="search-container" id="searchBar">
+        <input type="text" id="search-input" class="form-control" placeholder="Cari judul komik...">
+        <button class="btn btn-primary" onclick="searchComics()">🔍 Cari</button>
     </div>
-</nav>
+</header>
