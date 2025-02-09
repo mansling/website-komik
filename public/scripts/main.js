@@ -1,35 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Fungsi untuk mendapatkan parameter dari URL
     function getQueryParam(param) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(param);
+        return new URLSearchParams(window.location.search).get(param);
     }
-      fetch("/src/components/header.html")
+
+    // Memuat Header
+    fetch("/src/components/header.html")
         .then(response => response.text())
         .then(data => {
-            document.getElementById("header-container").innerHTML = data;
+            const headerContainer = document.getElementById("header-container");
+            if (headerContainer) {
+                headerContainer.innerHTML = data;
+            }
         })
         .catch(error => console.error("Gagal memuat header:", error));
 
-        document.addEventListener("DOMContentLoaded", function () {
-            setTimeout(() => {
-                const toggleDarkMode = document.getElementById("dark-mode-toggle");
-                if (toggleDarkMode) {
-                    toggleDarkMode.addEventListener("click", function () {
-                        document.body.classList.toggle("dark-mode");
-                        localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
-                    });
-        
-                    // Simpan preferensi pengguna
-                    if (localStorage.getItem("dark-mode") === "true") {
-                        document.body.classList.add("dark-mode");
-                    }
-                }
-            }, 500);
+    // Mode Gelap
+    const toggleDarkMode = document.getElementById("dark-mode-toggle");
+    if (toggleDarkMode) {
+        toggleDarkMode.addEventListener("click", function () {
+            document.body.classList.toggle("dark-mode");
+            localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
         });
 
+        if (localStorage.getItem("dark-mode") === "true") {
+            document.body.classList.add("dark-mode");
+        }
+    }
 
-    // Fetch data dari JSON (gunakan path lengkap jika di GitHub Pages)
+    // Fetch Data JSON
     fetch("./data.json")
         .then(response => response.json())
         .then(comics => {
@@ -49,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Gagal memuat data, coba lagi nanti.");
         });
 
-    // Fungsi untuk menampilkan daftar komik di index.html
+    // Fungsi Load List Komik
     function loadComicList(comics) {
         const comicContainer = document.getElementById("comic-list");
         if (!comicContainer) return;
@@ -68,145 +66,119 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Fungsi untuk menampilkan detail komik di detail.html
-        // Load Comic Detail Page
-        function loadComicDetail(comics) {
-            const comicId = getQueryParam("id");
-            const comic = comics.find(item => item.id == comicId);
-            
-            if (!comic) {
-                document.getElementById("comic-title").textContent = "Komik tidak ditemukan.";
-                return;
-            }
-        
-            document.getElementById("comic-title").textContent = comic.title;
-            document.getElementById("comic-cover").src = comic.cover;
-            document.getElementById("comic-description").textContent = comic.description || "Deskripsi tidak tersedia.";
-            
-            const readNowButton = document.getElementById("read-now");
-            const chapterListElement = document.getElementById("chapter-list");
-            chapterListElement.innerHTML = "";
-            
-            if (comic.chapters && comic.chapters.length > 0) {
-                // Ubah link "Baca Sekarang" ke chapter pertama
-                readNowButton.href = `chapter.html?id=${comic.id}&chapter=1`;
-            } else {
-                readNowButton.style.display = "none"; // Sembunyikan tombol jika tidak ada chapter
-            }
-            
-            comic.chapters?.forEach((chapter) => {
-                const chapterItem = document.createElement("li");
-                const chapterLink = document.createElement("a");
-                chapterLink.href = `chapter.html?id=${comic.id}&chapter=${chapter.number}`;
-                chapterLink.textContent = `Chapter ${chapter.number}`;
-                chapterItem.appendChild(chapterLink);
-                chapterListElement.appendChild(chapterItem);
-            });
+    // Load Detail Komik
+    function loadComicDetail(comics) {
+        const comicId = getQueryParam("id");
+        const comic = comics.find(item => item.id == comicId);
+        if (!comic) return;
+
+        document.getElementById("comic-title").textContent = comic.title;
+        document.getElementById("comic-cover").src = comic.cover;
+        document.getElementById("comic-description").textContent = comic.description || "Deskripsi tidak tersedia.";
+
+        const readNowButton = document.getElementById("read-now");
+        const chapterListElement = document.getElementById("chapter-list");
+
+        if (comic.chapters?.length > 0) {
+            readNowButton.href = `chapter.html?id=${comic.id}&chapter=1`;
+        } else {
+            readNowButton.style.display = "none";
         }
 
-    // Fungsi untuk menampilkan daftar chapter di chapters.html
+        chapterListElement.innerHTML = "";
+        comic.chapters?.forEach(chapter => {
+            const chapterItem = document.createElement("li");
+            chapterItem.innerHTML = `<a href="chapter.html?id=${comic.id}&chapter=${chapter.number}">Chapter ${chapter.number}</a>`;
+            chapterListElement.appendChild(chapterItem);
+        });
+    }
+
+    // Load Daftar Chapter
     function loadChaptersList(comics) {
         const comicId = getQueryParam("komik") || "1";
         const chapterListElement = document.getElementById("chapterList");
-
         const comic = comics.find(c => c.id == comicId);
-        if (!comic) {
-            chapterListElement.innerHTML = "<p>Komik tidak ditemukan.</p>";
-            return;
-        }
+        if (!comic) return;
 
         chapterListElement.innerHTML = "";
         comic.chapters.forEach(chapter => {
             const li = document.createElement("li");
-            const link = document.createElement("a");
-            link.href = `chapter.html?id=${comicId}&chapter=${chapter.number}`;
-            link.textContent = `Chapter ${chapter.number}`;
-            li.appendChild(link);
+            li.innerHTML = `<a href="chapter.html?id=${comicId}&chapter=${chapter.number}">Chapter ${chapter.number}</a>`;
             chapterListElement.appendChild(li);
         });
     }
 
-    // Fungsi untuk menampilkan isi chapter di chapter.html
-        function loadChapter(comics) {
+    // Load Isi Chapter
+    function loadChapter(comics) {
         const comicId = getQueryParam("id");
         const chapterNum = parseInt(getQueryParam("chapter"));
-    
         const comic = comics.find(c => c.id == comicId);
-        if (!comic) {
-            document.getElementById("chapter-content").textContent = "Komik tidak ditemukan.";
-            return;
-        }
-    
+        if (!comic) return;
+
         const chapter = comic.chapters.find(chap => chap.number == chapterNum);
-        if (!chapter) {
-            document.getElementById("chapter-content").textContent = "Chapter tidak ditemukan.";
-            return;
-        }
-    
-        // Set judul chapter
+        if (!chapter) return;
+
         document.getElementById("chapter-title").textContent = chapter.title;
         document.getElementById("chapter-content").innerHTML = `<img src="${chapter.image}" alt="${chapter.title}">`;
-    
-        // Navigasi chapter
+
+        // Navigasi Chapter
         const prevBtn = document.getElementById("prevChapter");
         const nextBtn = document.getElementById("nextChapter");
         const chapterSelect = document.getElementById("chapterSelect");
-    
-        // Hapus isi dropdown lalu isi ulang dengan semua chapter
-        chapterSelect.innerHTML = "";
-        comic.chapters.forEach((chap) => {
-            const option = document.createElement("option");
-            option.value = chap.number;
-            option.textContent = `Chapter ${chap.number}`;
-            if (chap.number == chapterNum) option.selected = true;
-            chapterSelect.appendChild(option);
-        });
-    
-        // Atur tombol navigasi
-        if (chapterNum > 1) {
-            prevBtn.disabled = false;
+
+        if (prevBtn) {
+            prevBtn.disabled = chapterNum <= 1;
             prevBtn.onclick = () => {
                 window.location.href = `chapter.html?id=${comicId}&chapter=${chapterNum - 1}`;
             };
-        } else {
-            prevBtn.disabled = true;
         }
-    
-        if (chapterNum < comic.chapters.length) {
-            nextBtn.disabled = false;
+
+        if (nextBtn) {
+            nextBtn.disabled = chapterNum >= comic.chapters.length;
             nextBtn.onclick = () => {
                 window.location.href = `chapter.html?id=${comicId}&chapter=${chapterNum + 1}`;
             };
-        } else {
-            nextBtn.disabled = true;
-        }
-    
-        // Navigasi lewat dropdown
-        chapterSelect.onchange = () => {
-            const selectedChapter = chapterSelect.value;
-            window.location.href = `chapter.html?id=${comicId}&chapter=${selectedChapter}`;
-        };
-    }
-            // --- Fitur Komentar ---
-        const commentInput = document.getElementById("comment-input");
-        const submitComment = document.getElementById("submit-comment");
-        const commentList = document.getElementById("comment-list");
-        
-    // Load komentar dari localStorage
-        function loadComments() {
-            const comicId = new URLSearchParams(window.location.search).get("id");
-            const comments = JSON.parse(localStorage.getItem(`comments-${comicId}`)) || [];
-            commentList.innerHTML = "";
-            comments.forEach(comment => {
-                const li = document.createElement("li");
-                li.textContent = comment;
-                commentList.appendChild(li);
-            });
         }
 
-    // Simpan komentar ke localStorage
-        submitComment?.addEventListener("click", function () {
-            const comicId = new URLSearchParams(window.location.search).get("id");
+        if (chapterSelect) {
+            chapterSelect.innerHTML = "";
+            comic.chapters.forEach(chap => {
+                const option = document.createElement("option");
+                option.value = chap.number;
+                option.textContent = `Chapter ${chap.number}`;
+                if (chap.number == chapterNum) option.selected = true;
+                chapterSelect.appendChild(option);
+            });
+
+            chapterSelect.onchange = () => {
+                window.location.href = `chapter.html?id=${comicId}&chapter=${chapterSelect.value}`;
+            };
+        }
+    }
+
+    // Load Komentar
+    function loadComments() {
+        const comicId = getQueryParam("id");
+        const comments = JSON.parse(localStorage.getItem(`comments-${comicId}`)) || [];
+        const commentList = document.getElementById("comment-list");
+        if (!commentList) return;
+
+        commentList.innerHTML = "";
+        comments.forEach(comment => {
+            const li = document.createElement("li");
+            li.textContent = comment;
+            commentList.appendChild(li);
+        });
+    }
+
+    // Simpan Komentar
+    const submitComment = document.getElementById("submit-comment");
+    if (submitComment) {
+        submitComment.addEventListener("click", function () {
+            const comicId = getQueryParam("id");
+            const commentInput = document.getElementById("comment-input");
+            if (!commentInput) return;
+
             let comments = JSON.parse(localStorage.getItem(`comments-${comicId}`)) || [];
             if (commentInput.value.trim() !== "") {
                 comments.push(commentInput.value.trim());
@@ -215,9 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 loadComments();
             }
         });
-        
-        // Panggil loadComments saat halaman dibuka
-        loadComments();
+    }
 
-
+    loadComments();
 });
