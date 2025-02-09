@@ -51,40 +51,6 @@
     
     <!-- Panggil script.js di akhir body -->
 
-
-<script>
-    fetch("header.html")
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("header-container").innerHTML = data;
-            attachDarkModeListener(); // Pastikan fungsi ini dipanggil setelah header dimuat
-        });
-
-    function attachDarkModeListener() {
-        const darkModeToggle = document.getElementById("dark-mode-toggle");
-        const body = document.body;
-
-        if (!darkModeToggle) {
-            console.error("Tombol Dark Mode tidak ditemukan!");
-            return;
-        }
-
-        if (localStorage.getItem("darkMode") === "enabled") {
-            body.classList.add("dark-mode");
-        }
-
-        darkModeToggle.addEventListener("click", function () {
-            body.classList.toggle("dark-mode");
-
-            if (body.classList.contains("dark-mode")) {
-                localStorage.setItem("darkMode", "enabled");
-            } else {
-                localStorage.setItem("darkMode", "disabled");
-            }
-        });
-    }
-</script>
-
   
 </body>
 </html>
