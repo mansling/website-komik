@@ -135,44 +135,36 @@ nav ul li a:hover, nav ul li button:hover {
 }
 
 /* Dark Mode Styles */
+/* Dark Mode */
 .dark-mode {
-    background-color: #121212;
-    color: white;
+  background-color: #000;
+  color: #E0E0E0;
 }
 
-.dark-mode .navbar {
-    background-color: #1f1f1f;
+/* Header hanya berubah saat dark mode aktif */
+.dark-mode .header {
+  background-color: #202020;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.dark-mode input, .dark-mode textarea {
-    background-color: #2a2a2a;
-    color: white;
-    border: 1px solid #555;
-}
-
-.dark-mode a {
-    color: #9acd32; /* Warna hijau terang untuk link */
-}
-
-.dark-mode button {
-    background-color: #444;
-    color: white;
-    border: none;
-}
-
+/* Tombol Dark Mode */
 .dark-mode-toggle {
-    background: none;
-    border: 1px solid white;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background-color: #303030;
+  color: #F1C40F;
+  border: 2px solid #F1C40F;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .dark-mode-toggle:hover {
-    background: white;
-    color: black;
+  background-color: #3A3A3A;
 }
+
 
 
 /* Comic Detail Page */
