@@ -50,37 +50,20 @@ nav ul li a:hover, nav ul li button:hover {
 }
 
 /* Search Bar */
-#searchBar {
-    width: 60%;
-    max-width: 400px;
-    padding: 10px;
-    border: 2px solid #007bff;
-    border-radius: 25px;
-    font-size: 16px;
-    outline: none;
-    transition: border 0.3s, box-shadow 0.3s;
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Pindah ke kanan */
+    width: 250px; /* Sesuaikan ukuran */
 }
 
-#searchBar:focus {
-    border-color: #0056b3;
-    box-shadow: 0 0 10px rgba(0, 91, 187, 0.5);
+.search-bar input {
+    flex: 1;
+    border-radius: 5px 0 0 5px;
 }
 
-#clearSearch {
-    padding: 10px 15px;
-    border: none;
-    background: #dc3545;
-    color: white;
-    border-radius: 25px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-left: 10px;
-    transition: background 0.3s, transform 0.2s;
-}
-
-#clearSearch:hover {
-    background: #c82333;
-    transform: scale(1.05);
+.search-bar button {
+    border-radius: 0 5px 5px 0;
 }
 
 /* Comic List */
