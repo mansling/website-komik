@@ -147,22 +147,22 @@ nav ul li a:hover, nav ul li button:hover {
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Tombol Dark Mode */
-.dark-mode-toggle {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  background-color: #303030;
-  color: #F1C40F;
-  border: 2px solid #F1C40F;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+#dark-mode-toggle {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #f1c40f;
+    border-radius: 8px;
+    background-color: #f1c40f;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
-.dark-mode-toggle:hover {
-  background-color: #3A3A3A;
+#dark-mode-toggle:hover {
+    background-color: #f39c12;
+    color: white;
 }
 
 
