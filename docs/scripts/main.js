@@ -18,21 +18,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const darkModeToggle = document.getElementById("dark-mode-toggle");
     const body = document.body;
 
+    if (!darkModeToggle) {
+        console.error("Tombol Dark Mode tidak ditemukan!");
+        return;
+    }
+
     // Cek status Dark Mode dari localStorage
-    if (localStorage.getItem("darkMode") === "enabled") {
+    if (localStorage.getItem("dark-mode") === "enabled") {
         body.classList.add("dark-mode");
     }
 
+    // Event untuk tombol
     darkModeToggle.addEventListener("click", function () {
         body.classList.toggle("dark-mode");
 
         // Simpan status di localStorage
         if (body.classList.contains("dark-mode")) {
-            localStorage.setItem("darkMode", "enabled");
+            localStorage.setItem("dark-mode", "enabled");
         } else {
-            localStorage.setItem("darkMode", "disabled");
+            localStorage.setItem("dark-mode", "disabled");
         }
     });
+
 
     // Memuat data JSON
     fetch("data/comics.json")
