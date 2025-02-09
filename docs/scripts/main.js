@@ -11,18 +11,26 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => document.getElementById("footer-container").innerHTML = data);
 
     // Mode Gelap
-    const toggle = document.getElementById("dark-mode-toggle");
-        if (toggle) {
-            toggle.addEventListener("click", function () {
-                document.body.classList.toggle("dark-mode");
-                localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
-            });
     
-            // Pastikan dark mode tetap aktif saat reload
-            if (localStorage.getItem("darkMode") === "true") {
-                document.body.classList.add("dark-mode");
-            }
+        const darkModeToggle = document.getElementById("dark-mode-toggle");
+        const body = document.body;
+    
+        // Cek apakah pengguna pernah mengaktifkan dark mode sebelumnya
+        if (localStorage.getItem("darkMode") === "enabled") {
+            body.classList.add("dark-mode");
         }
+    
+        darkModeToggle.addEventListener("click", function () {
+            body.classList.toggle("dark-mode");
+    
+            // Simpan preferensi pengguna di localStorage
+            if (body.classList.contains("dark-mode")) {
+                localStorage.setItem("darkMode", "enabled");
+            } else {
+                localStorage.setItem("darkMode", "disabled");
+            }
+        });
+
 
     // Fetch Data JSON
     fetch("data/comics.json")
