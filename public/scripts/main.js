@@ -11,27 +11,23 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("Gagal memuat header:", error));
 
-      setTimeout(() => { // Tunggu sejenak supaya header sudah termuat
-          const darkModeToggle = document.getElementById("dark-mode-toggle");
-          const body = document.body;
-  
-          // Cek apakah dark mode sebelumnya aktif
-          if (localStorage.getItem("darkMode") === "enabled") {
-              body.classList.add("dark-mode");
-          }
-  
-          // Klik tombol untuk toggle dark mode
-          darkModeToggle?.addEventListener("click", function () {
-              body.classList.toggle("dark-mode");
-  
-              // Simpan status dark mode ke localStorage
-              if (body.classList.contains("dark-mode")) {
-                  localStorage.setItem("darkMode", "enabled");
-              } else {
-                  localStorage.removeItem("darkMode");
-              }
-          });
-      }, 500); // Delay 500ms supaya header sudah termuat
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(() => {
+                const toggleDarkMode = document.getElementById("dark-mode-toggle");
+                if (toggleDarkMode) {
+                    toggleDarkMode.addEventListener("click", function () {
+                        document.body.classList.toggle("dark-mode");
+                        localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
+                    });
+        
+                    // Simpan preferensi pengguna
+                    if (localStorage.getItem("dark-mode") === "true") {
+                        document.body.classList.add("dark-mode");
+                    }
+                }
+            }, 500);
+        });
+
 
     // Fetch data dari JSON (gunakan path lengkap jika di GitHub Pages)
     fetch("./data.json")
