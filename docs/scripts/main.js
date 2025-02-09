@@ -3,42 +3,45 @@ document.addEventListener("DOMContentLoaded", function () {
         return new URLSearchParams(window.location.search).get(param);
     }
 
-    // Memuat header dan footer
-    fetch("header.html")
-        .then(response => response.text())
-        .then(data => document.getElementById("header-container").innerHTML = data)
-        .catch(error => console.error("Gagal memuat header:", error));
-
-    fetch("footer.html")
-        .then(response => response.text())
-        .then(data => document.getElementById("footer-container").innerHTML = data)
-        .catch(error => console.error("Gagal memuat footer:", error));
-  
     // Dark Mode
-    const darkModeToggle = document.getElementById("dark-mode-toggle");
-    const body = document.body;
+// Memuat header dan footer
+fetch("header.html")
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("header-container").innerHTML = data;
 
-    if (!darkModeToggle) {
-        console.error("Tombol Dark Mode tidak ditemukan!");
-        return;
-    }
+        // **Jalankan Dark Mode setelah header dimuat**
+        const darkModeToggle = document.getElementById("dark-mode-toggle");
+        const body = document.body;
 
-    // Cek status Dark Mode dari localStorage
-    if (localStorage.getItem("dark-mode") === "enabled") {
-        body.classList.add("dark-mode");
-    }
-
-    // Event untuk tombol
-    darkModeToggle.addEventListener("click", function () {
-        body.classList.toggle("dark-mode");
-
-        // Simpan status di localStorage
-        if (body.classList.contains("dark-mode")) {
-            localStorage.setItem("dark-mode", "enabled");
-        } else {
-            localStorage.setItem("dark-mode", "disabled");
+        if (!darkModeToggle) {
+            console.error("Tombol Dark Mode tidak ditemukan!");
+            return;
         }
-    });
+
+        // Cek status Dark Mode dari localStorage
+        if (localStorage.getItem("dark-mode") === "enabled") {
+            body.classList.add("dark-mode");
+        }
+
+        // Event untuk tombol
+        darkModeToggle.addEventListener("click", function () {
+            body.classList.toggle("dark-mode");
+
+            // Simpan status di localStorage
+            if (body.classList.contains("dark-mode")) {
+                localStorage.setItem("dark-mode", "enabled");
+            } else {
+                localStorage.setItem("dark-mode", "disabled");
+            }
+        });
+    })
+    .catch(error => console.error("Gagal memuat header:", error));
+
+fetch("footer.html")
+    .then(response => response.text())
+    .then(data => document.getElementById("footer-container").innerHTML = data)
+    .catch(error => console.error("Gagal memuat footer:", error));
 
 
     // Memuat data JSON
