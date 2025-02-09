@@ -1,6 +1,6 @@
 /* Global Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
     background-color: #f5f5f5;
     color: #333;
     text-align: center;
@@ -12,6 +12,11 @@ body {
 nav {
     background: #333;
     padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 nav ul {
@@ -20,6 +25,7 @@ nav ul {
     justify-content: center;
     gap: 20px;
     padding: 0;
+    margin: 0;
 }
 
 nav ul li {
@@ -31,7 +37,7 @@ nav ul li a, nav ul li button {
     text-decoration: none;
     padding: 10px 15px;
     border-radius: 5px;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.2s;
     border: none;
     background: none;
     cursor: pointer;
@@ -40,6 +46,7 @@ nav ul li a, nav ul li button {
 
 nav ul li a:hover, nav ul li button:hover {
     background: #555;
+    transform: scale(1.1);
 }
 
 /* Search Bar */
@@ -51,7 +58,7 @@ nav ul li a:hover, nav ul li button:hover {
     border-radius: 25px;
     font-size: 16px;
     outline: none;
-    transition: 0.3s;
+    transition: border 0.3s, box-shadow 0.3s;
 }
 
 #searchBar:focus {
@@ -68,34 +75,36 @@ nav ul li a:hover, nav ul li button:hover {
     font-size: 16px;
     cursor: pointer;
     margin-left: 10px;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.2s;
 }
 
 #clearSearch:hover {
     background: #c82333;
+    transform: scale(1.05);
 }
 
 /* Comic List */
 #comic-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     padding: 20px;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .comic-item {
-    width: 250px;
     background: white;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .comic-item:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .comic-item img {
@@ -104,14 +113,9 @@ nav ul li a:hover, nav ul li button:hover {
     border-radius: 5px;
 }
 
-.comic-item h2 {
+.comic-item h3 {
     font-size: 18px;
     margin: 10px 0;
-}
-
-.comic-item p {
-    font-size: 14px;
-    color: #555;
 }
 
 .comic-item a {
@@ -122,43 +126,36 @@ nav ul li a:hover, nav ul li button:hover {
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.2s;
 }
 
 .comic-item a:hover {
     background: #0056b3;
+    transform: scale(1.05);
 }
 
 /* Dark Mode */
 .dark-mode {
-    background-color: #222;
-    color: #fff;
+    background-color: #1c1c1c;
+    color: #f5f5f5;
 }
 
 .dark-mode nav {
-    background: #111;
+    background: #121212;
 }
 
 .dark-mode .comic-item {
-    background: #333;
+    background: #2a2a2a;
     color: white;
 }
 
 .dark-mode .comic-detail-container {
-    background: #333;
+    background: #2a2a2a;
     color: white;
 }
 
 .dark-mode .comic-info p {
     color: #ccc;
-}
-
-.dark-mode .read-button {
-    background: #ff9800;
-}
-
-.dark-mode .read-button:hover {
-    background: #e68900;
 }
 
 /* Comic Detail Page */
@@ -168,7 +165,7 @@ nav ul li a:hover, nav ul li button:hover {
     justify-content: center;
     gap: 20px;
     max-width: 900px;
-    margin: 20px auto;
+    margin: 100px auto 20px;
     flex-wrap: wrap;
     background: #fff;
     padding: 20px;
@@ -202,15 +199,12 @@ nav ul li a:hover, nav ul li button:hover {
     font-size: 24px;
     color: #333;
     margin-bottom: 10px;
-    text-align: center;
 }
 
 .comic-info p {
     font-size: 16px;
     color: #666;
     margin: 10px 0;
-    padding-bottom: 5px;
-    text-align: center;
 }
 
 .synopsis {
@@ -218,7 +212,6 @@ nav ul li a:hover, nav ul li button:hover {
     color: #444;
     margin-top: 15px;
     line-height: 1.5;
-    text-align: center;
 }
 
 .read-button {
@@ -229,15 +222,15 @@ nav ul li a:hover, nav ul li button:hover {
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s;
-    margin-top: 10px;
+    transition: background 0.3s, transform 0.2s;
     display: inline-block;
     text-align: center;
     margin-bottom: 20px;
 }
 
-.read-button {
-    display: inline-block;
+.read-button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
 }
 
 /* Chapter List */
@@ -245,7 +238,7 @@ nav ul li a:hover, nav ul li button:hover {
     list-style: none;
     padding: 0;
     margin-top: 20px;
-    padding-left: 15px;
+    text-align: left;
 }
 
 #chapter-list li {
@@ -256,9 +249,22 @@ nav ul li a:hover, nav ul li button:hover {
     text-decoration: none;
     color: #007bff;
     font-weight: bold;
-    transition: color 0.3s;
+    transition: color 0.3s, transform 0.2s;
 }
 
 #chapter-list a:hover {
     color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .comic-detail-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #comic-cover {
+        max-width: 100%;
+    }
 }
