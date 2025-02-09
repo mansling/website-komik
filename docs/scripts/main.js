@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Memuat Header
-    fetch("/src/components/header.html")
+    fetch("../src/components/header.html")
         .then(response => response.text())
         .then(data => {
             const headerContainer = document.getElementById("header-container");
