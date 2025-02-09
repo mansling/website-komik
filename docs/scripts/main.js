@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Memuat Header
-    fetch("../src/components/header.html")
+    fetch("header.html")
         .then(response => response.text())
         .then(data => {
             const headerContainer = document.getElementById("header-container");
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Fetch Data JSON
-    fetch("./data.json")
+    fetch("data/comics.json")
         .then(response => response.json())
         .then(comics => {
             const path = window.location.pathname;
