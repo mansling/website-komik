@@ -2,17 +2,13 @@ document.addEventListener("DOMContentLoaded", function () {
     function getQueryParam(param) {
         return new URLSearchParams(window.location.search).get(param);
     }
-
-    // Memuat Header
-    fetch("header.html")
+    fetch("header.html") // Hanya "header.html" karena ada di folder yang sama dengan index.html
         .then(response => response.text())
-        .then(data => {
-            const headerContainer = document.getElementById("header-container");
-            if (headerContainer) {
-                headerContainer.innerHTML = data;
-            }
-        })
-        .catch(error => console.error("Gagal memuat header:", error));
+        .then(data => document.getElementById("header-container").innerHTML = data);
+
+    fetch("footer.html") 
+        .then(response => response.text())
+        .then(data => document.getElementById("footer-container").innerHTML = data);
 
     // Mode Gelap
     const toggle = document.getElementById("dark-mode-toggle");
