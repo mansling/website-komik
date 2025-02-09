@@ -15,18 +15,18 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("Gagal memuat header:", error));
 
     // Mode Gelap
-      const toggle = document.getElementById("dark-mode-toggle");
-      if (toggle) {
-          toggle.addEventListener("click", function () {
-              document.body.classList.toggle("dark-mode");
-              localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
-          });
-  
-          // Pastikan dark mode tetap aktif saat halaman dimuat ulang
-          if (localStorage.getItem("darkMode") === "true") {
-              document.body.classList.add("dark-mode");
-          }
-      }
+    const toggle = document.getElementById("dark-mode-toggle");
+        if (toggle) {
+            toggle.addEventListener("click", function () {
+                document.body.classList.toggle("dark-mode");
+                localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+            });
+    
+            // Pastikan dark mode tetap aktif saat reload
+            if (localStorage.getItem("darkMode") === "true") {
+                document.body.classList.add("dark-mode");
+            }
+        }
 
     // Fetch Data JSON
     fetch("data/comics.json")
