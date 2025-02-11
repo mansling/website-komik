@@ -3,12 +3,15 @@ document.addEventListener("DOMContentLoaded", function () {
         return new URLSearchParams(window.location.search).get(param);
     }
 
-    // Dark Mode
-// Memuat header dan footer
-fetch("header.html")
+    // header
+  fetch("header.html")
     .then(response => response.text())
     .then(data => {
         document.getElementById("header-container").innerHTML = data;
+
+        // Pastikan elemen sudah ada sebelum menambahkan event listener
+        document.getElementById("menu-button").addEventListener("click", toggleMenu);
+        document.getElementById("search-button").addEventListener("click", toggleSearch);
 
         // **Jalankan Dark Mode setelah header dimuat**
         const darkModeToggle = document.getElementById("dark-mode-toggle");
@@ -19,25 +22,17 @@ fetch("header.html")
             return;
         }
 
-        // Cek status Dark Mode dari localStorage
         if (localStorage.getItem("dark-mode") === "enabled") {
             body.classList.add("dark-mode");
         }
 
-        // Event untuk tombol
         darkModeToggle.addEventListener("click", function () {
             body.classList.toggle("dark-mode");
-
-            // Simpan status di localStorage
-            if (body.classList.contains("dark-mode")) {
-                localStorage.setItem("dark-mode", "enabled");
-            } else {
-                localStorage.setItem("dark-mode", "disabled");
-            }
+            localStorage.setItem("dark-mode", body.classList.contains("dark-mode") ? "enabled" : "disabled");
         });
     })
     .catch(error => console.error("Gagal memuat header:", error));
-}
+
 
 
 fetch("footer.html")
@@ -92,13 +87,7 @@ fetch("footer.html")
         }
     }
 
-function toggleMenu() {
-    document.querySelector(".nav-links").classList.toggle("active");
-}
 
-function toggleSearch() {
-    document.getElementById("searchBar").classList.toggle("active");
-}
 
     // Fungsi untuk memuat daftar komik
     function loadComicList(comics) {
