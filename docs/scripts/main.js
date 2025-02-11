@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return new URLSearchParams(window.location.search).get(param);
     }
 
-    // **Memuat Data Komik dari JSON**
     fetch("data/comics.json")
         .then(response => response.json())
         .then(comics => {
@@ -23,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Gagal memuat data, coba lagi nanti.");
         });
 
-    // **Memuat Daftar Komik**
     function loadComicList(comics) {
         const comicContainer = document.getElementById("comic-list");
         if (!comicContainer) return;
@@ -40,38 +38,4 @@ document.addEventListener("DOMContentLoaded", function () {
             comicContainer.appendChild(div);
         });
     }
-
-    // **Fitur Komentar**
-    function loadComments() {
-        const comicId = getQueryParam("id");
-        const comments = JSON.parse(localStorage.getItem(`comments-${comicId}`)) || [];
-        const commentList = document.getElementById("comment-list");
-        if (!commentList) return;
-
-        commentList.innerHTML = "";
-        comments.forEach(comment => {
-            const li = document.createElement("li");
-            li.textContent = comment;
-            commentList.appendChild(li);
-        });
-    }
-
-    const submitComment = document.getElementById("submit-comment");
-    if (submitComment) {
-        submitComment.addEventListener("click", function () {
-            const comicId = getQueryParam("id");
-            const commentInput = document.getElementById("comment-input");
-            if (!commentInput) return;
-
-            let comments = JSON.parse(localStorage.getItem(`comments-${comicId}`)) || [];
-            if (commentInput.value.trim() !== "") {
-                comments.push(commentInput.value.trim());
-                localStorage.setItem(`comments-${comicId}`, JSON.stringify(comments));
-                commentInput.value = "";
-                loadComments();
-            }
-        });
-    }
-
-    loadComments(); // Pastikan komentar dimuat setelah DOM siap
 });
