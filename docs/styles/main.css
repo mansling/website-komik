@@ -60,15 +60,23 @@ nav ul li a:hover, nav ul li button:hover {
     text-align: center;
     z-index: 1000;
 }
-
-/* Tampilkan Menu Jika Aktif */
-.nav-links.active {
-    display: flex;
+/* Navbar biar gak turun */
+.nav-links {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    background: #222;
+    width: 100%;
+    text-align: center;
 }
-@media (min-width: 768px) {
-    .nav-links {
-        display: flex !important;
-    }
+
+/* Tampilkan menu kalau aktif */
+.nav-links.active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Tombol Hamburger */
