@@ -48,6 +48,41 @@ nav ul li a:hover, nav ul li button:hover {
     background: #555;
     transform: scale(1.1);
 }
+/* Default: Menu Tersembunyi di Mobile */
+.nav-links {
+    display: none;
+    flex-direction: column;
+    background: #222;
+    position: absolute;
+    top: 50px; /* Sesuaikan dengan tinggi navbar */
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 1000;
+}
+
+/* Tampilkan Menu Jika Aktif */
+.nav-links.active {
+    display: flex;
+}
+
+/* Tombol Hamburger */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Tampilkan Tombol di Mobile */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+}
+
 
 /* Search kecil di navbar */
 .search-icon {
