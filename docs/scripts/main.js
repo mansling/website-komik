@@ -3,45 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return new URLSearchParams(window.location.search).get(param);
     }
 
-    // header
-  fetch("header.html")
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("header-container").innerHTML = data;
-
-        // Pastikan elemen sudah ada sebelum menambahkan event listener
-        document.getElementById("menu-button").addEventListener("click", toggleMenu);
-        document.getElementById("search-button").addEventListener("click", toggleSearch);
-
-        // **Jalankan Dark Mode setelah header dimuat**
-        const darkModeToggle = document.getElementById("dark-mode-toggle");
-        const body = document.body;
-
-        if (!darkModeToggle) {
-            console.error("Tombol Dark Mode tidak ditemukan!");
-            return;
-        }
-
-        if (localStorage.getItem("dark-mode") === "enabled") {
-            body.classList.add("dark-mode");
-        }
-
-        darkModeToggle.addEventListener("click", function () {
-            body.classList.toggle("dark-mode");
-            localStorage.setItem("dark-mode", body.classList.contains("dark-mode") ? "enabled" : "disabled");
-        });
-    })
-    .catch(error => console.error("Gagal memuat header:", error));
-
-
-
-fetch("footer.html")
-    .then(response => response.text())
-    .then(data => document.getElementById("footer-container").innerHTML = data)
-    .catch(error => console.error("Gagal memuat footer:", error));
-
-
-    // Memuat data JSON
+    // **Memuat Data Komik dari JSON**
     fetch("data/comics.json")
         .then(response => response.json())
         .then(comics => {
@@ -61,35 +23,7 @@ fetch("footer.html")
             alert("Gagal memuat data, coba lagi nanti.");
         });
 
-    // Fungsi pencarian komik
-    document.getElementById("search-input")?.addEventListener("input", function () {
-        searchComics();
-    });
-
-    function searchComics() {
-        const query = document.getElementById("search-input").value.toLowerCase();
-        const comics = document.querySelectorAll(".comic-item");
-        comics.forEach(comic => {
-            const title = comic.querySelector("h3").textContent.toLowerCase();
-            comic.style.display = title.includes(query) ? "block" : "none";
-        });
-    }
-      function toggleSearch() {
-        let searchBar = document.getElementById("searchBar");
-        let navbar = document.querySelector(".navbar");
-    
-        if (searchBar.style.display === "none" || searchBar.style.display === "") {
-            searchBar.style.display = "flex";
-            navbar.classList.add("active");
-        } else {
-            searchBar.style.display = "none";
-            navbar.classList.remove("active");
-        }
-    }
-
-
-
-    // Fungsi untuk memuat daftar komik
+    // **Memuat Daftar Komik**
     function loadComicList(comics) {
         const comicContainer = document.getElementById("comic-list");
         if (!comicContainer) return;
@@ -107,10 +41,7 @@ fetch("footer.html")
         });
     }
 
-    // Fungsi lainnya (load detail, load chapter, load komentar, dll.) tetap sama seperti di kode lama
-
-    loadComments();
-
+    // **Fitur Komentar**
     function loadComments() {
         const comicId = getQueryParam("id");
         const comments = JSON.parse(localStorage.getItem(`comments-${comicId}`)) || [];
@@ -125,7 +56,6 @@ fetch("footer.html")
         });
     }
 
-    // Simpan komentar
     const submitComment = document.getElementById("submit-comment");
     if (submitComment) {
         submitComment.addEventListener("click", function () {
@@ -142,4 +72,6 @@ fetch("footer.html")
             }
         });
     }
+
+    loadComments(); // Pastikan komentar dimuat setelah DOM siap
 });
