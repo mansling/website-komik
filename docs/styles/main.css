@@ -65,6 +65,11 @@ nav ul li a:hover, nav ul li button:hover {
 .nav-links.active {
     display: flex;
 }
+@media (min-width: 768px) {
+    .nav-links {
+        display: flex !important;
+    }
+}
 
 /* Tombol Hamburger */
 .menu-toggle {
