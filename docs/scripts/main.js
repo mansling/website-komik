@@ -37,6 +37,10 @@ fetch("header.html")
         });
     })
     .catch(error => console.error("Gagal memuat header:", error));
+  function toggleMenu() {
+    document.querySelector(".nav-links").classList.toggle("active");
+}
+
 
 fetch("footer.html")
     .then(response => response.text())
