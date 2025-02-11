@@ -37,8 +37,6 @@ fetch("header.html")
         });
     })
     .catch(error => console.error("Gagal memuat header:", error));
-  function toggleMenu() {
-    document.querySelector(".nav-links").classList.toggle("active");
 }
 
 
@@ -94,6 +92,13 @@ fetch("footer.html")
         }
     }
 
+function toggleMenu() {
+    document.querySelector(".nav-links").classList.toggle("active");
+}
+
+function toggleSearch() {
+    document.getElementById("searchBar").classList.toggle("active");
+}
 
     // Fungsi untuk memuat daftar komik
     function loadComicList(comics) {
